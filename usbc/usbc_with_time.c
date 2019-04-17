@@ -23,11 +23,15 @@ int main(int argc, char *argv[])
   libusb_device_handle *tusb_handle;
   int r;
   int num_bytes;
+  int h, m, s;
+  //Digits displayed by individual Nixies
+  int nixies[6];
   ssize_t cnt;
 
   char ibuff[64]; // input buffer on host
   char obuff[64]; // output buffer on host
-  
+  char P1, P0;
+
   //Variables to keep track of time
   time_t curtime;
 
@@ -55,6 +59,26 @@ int main(int argc, char *argv[])
   }
 
   while(1)  {
+  //Lookup system time in string format and print message
+  time(&curtime);
+  time_str = ctime(&curtime);
+  printf("Current time = %s", time_str);
+  //const char *str = "01:02:03";
+  //Read time into variables
+  sscanf(str, "%d:%d:%d", &h, &m, &s);
+  printf ("%d, %d, %d\n", h, m, s);
+  //Read in digits into Nixies array
+  nixies[5] = h/10;
+  nixies[4] = h%10;
+  nixies[3] = m/10;
+  nixies[2] = m%10;
+  nixies[1] = s/10;
+  nixies[0] = s%10;
+  //Begin Multiplexing cycle starting with nixie[5];
+  //Select 6 digits over the period of one cycle
+  for(int i = 0; i < 6; i++)  {
+    
+  }
 
   // Send CMD_5 and get the response from TUSB firmware
   obuff[0] = CMD_01;
@@ -64,8 +88,14 @@ int main(int argc, char *argv[])
   r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
   printf("CMD_01: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
   sleep(1);
-
   // Send CMD_5 and get the response from TUSB firmware// Send CMD_5 and get the response from TUSB firmware
+  obuff[0] = CMD_01;
+  obuff[1] = 0x01;
+  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
+  ibuff[0] = 0;
+  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
+  printf("CMD_01: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
+  sleep(1);
   obuff[0] = CMD_02;
   obuff[1] = 0x01;
   r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
@@ -74,28 +104,7 @@ int main(int argc, char *argv[])
   printf("CMD_02: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
   sleep(1);
   
-  // Send CMD_5 and get the response from TUSB firmware
-  obuff[0] = CMD_03;
-  obuff[1] = 0x01;
-  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
-  ibuff[0] = 0;
-  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
-  printf("CMD_03: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
-  sleep(1);
-  
-  // Send CMD_5 and get the response from TUSB firmware
-  obuff[0] = CMD_04;
-  obuff[1] = 0x01;
-  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
-  ibuff[0] = 0;
-  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
-  printf("CMD_04: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
-
-  sleep(1);
-  
-  }
-
-  // Done
+  //Done
   i = libusb_release_interface(tusb_handle, 0);
   if(i<0) {
     printf("Cannot release intefrace\n");
