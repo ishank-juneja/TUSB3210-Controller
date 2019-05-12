@@ -1,6 +1,6 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : FreeWare ANSI-C Compiler
-                              3 ; Version 2.3.0 Tue Apr 16 17:21:30 2019
+                              3 ; Version 2.3.0 Thu May  9 16:35:10 2019
                               4 
                               5 ;--------------------------------------------------------
                               6 	.module tfirm
@@ -317,7 +317,7 @@
                             317 ;--------------------------------------------------------
                             318 	.area CSEG    (CODE)
    0000                     319 __interrupt_vect:
-   0000 02 0A B2            320 	ljmp	__sdcc_gsinit_startup
+   0000 02 0A A0            320 	ljmp	__sdcc_gsinit_startup
    0003 02 07 7A            321 	ljmp	_usbISR
    0006                     322 	.ds	5
    000B 32                  323 	reti
@@ -336,31 +336,31 @@
                             336 	.area GSINIT  (CODE)
                             337 	.area GSFINAL (CODE)
                             338 	.area GSINIT  (CODE)
-   0AB2                     339 __sdcc_gsinit_startup:
-   0AB2 75 81 07            340 	mov	sp,#7
-   0AB5 12 0A 55            341 	lcall	__sdcc_external_startup
-   0AB8 E5 82               342 	mov	a,dpl
-   0ABA 60 03               343 	jz	__sdcc_init_data
-   0ABC 02 00 33            344 	ljmp	__sdcc_program_startup
-   0ABF                     345 __sdcc_init_data:
+   0AA0                     339 __sdcc_gsinit_startup:
+   0AA0 75 81 07            340 	mov	sp,#7
+   0AA3 12 0A 43            341 	lcall	__sdcc_external_startup
+   0AA6 E5 82               342 	mov	a,dpl
+   0AA8 60 03               343 	jz	__sdcc_init_data
+   0AAA 02 00 33            344 	ljmp	__sdcc_program_startup
+   0AAD                     345 __sdcc_init_data:
                             346 ;	tfirm.c 12
-   0ABF 75 30 00            347 	mov	_deviceReady,#0x00
+   0AAD 75 30 00            347 	mov	_deviceReady,#0x00
                             348 ;	tfirm.c 15
-   0AC2 E4                  349 	clr	a
-   0AC3 F5 34               350 	mov	(_wDeviceFeatures + 1),a
-   0AC5 F5 33               351 	mov	_wDeviceFeatures,a
+   0AB0 E4                  349 	clr	a
+   0AB1 F5 34               350 	mov	(_wDeviceFeatures + 1),a
+   0AB3 F5 33               351 	mov	_wDeviceFeatures,a
                             352 ;	tfirm.c 20
-   0AC7 75 3F 00            353 	mov	_bConfigurationNumber,#0x00
+   0AB5 75 3F 00            353 	mov	_bConfigurationNumber,#0x00
                             354 ;	tfirm.c 21
-   0ACA 75 40 00            355 	mov	_bInterfaceNumber,#0x00
+   0AB8 75 40 00            355 	mov	_bInterfaceNumber,#0x00
                             356 ;	tfirm.c 23
-   0ACD 75 41 00            357 	mov	_bSuspended,#0x00
+   0ABB 75 41 00            357 	mov	_bSuspended,#0x00
                             358 ;	tfirm.c 27
-   0AD0 75 44 01            359 	mov	_gbProtocol,#0x01
+   0ABE 75 44 01            359 	mov	_gbProtocol,#0x01
                             360 ;	tfirm.c 75
-   0AD3 75 4E 00            361 	mov	_total,#0x00
+   0AC1 75 4E 00            361 	mov	_total,#0x00
                             362 	.area GSFINAL (CODE)
-   0AD6 02 00 33            363 	ljmp	__sdcc_program_startup
+   0AC4 02 00 33            363 	ljmp	__sdcc_program_startup
                             364 ;--------------------------------------------------------
                             365 ; Home
                             366 ;--------------------------------------------------------
@@ -1425,7 +1425,7 @@
    0462 8E 82              1425 	mov  dpl,r6
    0464 8F 83              1426 	mov  dph,r7
    0466 88 F0              1427 	mov  b,r0
-   0468 12 0A 59           1428 	lcall	__gptrput
+   0468 12 0A 47           1428 	lcall	__gptrput
                            1429 ;	tfirm.c 581
    046B 0D                 1430 	inc	r5
                            1431 ; Peephole 132   changed ljmp to sjmp
@@ -1595,7 +1595,7 @@
    052C B5 39 02           1595 	cjne	a,_pbIEP0Buffer,00131$
    052F 05 3A              1596 	inc	(_pbIEP0Buffer + 1)
    0531                    1597 00131$:
-   0531 12 0A 8A           1598 	lcall	__gptrget
+   0531 12 0A 78           1598 	lcall	__gptrget
                            1599 ; Peephole 136   removed redundant moves
    0534 FE                 1600 	mov  r6,a
    0535 8C 82              1601 	mov  dpl,r4
@@ -1736,7 +1736,7 @@
    05AC 3B                 1736 	addc	a,r3
    05AD F5 83              1737 	mov	dph,a
    05AF 8C F0              1738 	mov	b,r4
-   05B1 12 0A 8A           1739 	lcall	__gptrget
+   05B1 12 0A 78           1739 	lcall	__gptrget
    05B4 F5 53              1740 	mov	_usbDecodeAndProcessUsbRequest_sloc0_1_0,a
    05B6 89 54              1741 	mov	_usbDecodeAndProcessUsbRequest_sloc1_1_0,r1
    05B8 E5 54              1742 	mov	a,_usbDecodeAndProcessUsbRequest_sloc1_1_0
@@ -1776,7 +1776,7 @@
    05D8 3B                 1776 	addc	a,r3
    05D9 F5 83              1777 	mov	dph,a
    05DB 8C F0              1778 	mov	b,r4
-   05DD 12 0A 8A           1779 	lcall	__gptrget
+   05DD 12 0A 78           1779 	lcall	__gptrget
                            1780 ; Peephole 105   removed redundant mov
    05E0 FF                 1781 	mov  r7,a
    05E1 52 05              1782 	anl	ar5,a
@@ -1821,10 +1821,10 @@
    0608 3B                 1821 	addc	a,r3
    0609 F5 83              1822 	mov	dph,a
    060B 8C F0              1823 	mov	b,r4
-   060D 12 0A 8A           1824 	lcall	__gptrget
+   060D 12 0A 78           1824 	lcall	__gptrget
    0610 FA                 1825 	mov	r2,a
    0611 A3                 1826 	inc	dptr
-   0612 12 0A 8A           1827 	lcall	__gptrget
+   0612 12 0A 78           1827 	lcall	__gptrget
    0615 FB                 1828 	mov	r3,a
    0616 74 23              1829 	mov	a,#00129$
    0618 C0 E0              1830 	push	acc
@@ -2091,31 +2091,31 @@
                            2091 ; Peephole 132   changed ljmp to sjmp
    0715 80 17              2092 	sjmp 00115$
    0717                    2093 00109$:
-   0717 12 0A 1A           2094 	lcall	_fn_cmd_04
+   0717 12 0A 08           2094 	lcall	_fn_cmd_04
                            2095 ;	tfirm.c 849
                            2096 ;	tfirm.c 852
                            2097 ; Peephole 132   changed ljmp to sjmp
    071A 80 12              2098 	sjmp 00115$
    071C                    2099 00110$:
-   071C 12 0A 2D           2100 	lcall	_fn_cmd_05
+   071C 12 0A 1B           2100 	lcall	_fn_cmd_05
                            2101 ;	tfirm.c 853
                            2102 ;	tfirm.c 856
                            2103 ; Peephole 132   changed ljmp to sjmp
    071F 80 0D              2104 	sjmp 00115$
    0721                    2105 00111$:
-   0721 12 0A 40           2106 	lcall	_fn_cmd_06
+   0721 12 0A 2E           2106 	lcall	_fn_cmd_06
                            2107 ;	tfirm.c 857
                            2108 ;	tfirm.c 860
                            2109 ; Peephole 132   changed ljmp to sjmp
    0724 80 08              2110 	sjmp 00115$
    0726                    2111 00112$:
-   0726 12 0A 53           2112 	lcall	_fn_cmd_07
+   0726 12 0A 41           2112 	lcall	_fn_cmd_07
                            2113 ;	tfirm.c 861
                            2114 ;	tfirm.c 864
                            2115 ; Peephole 132   changed ljmp to sjmp
    0729 80 03              2116 	sjmp 00115$
    072B                    2117 00113$:
-   072B 12 0A 54           2118 	lcall	_fn_cmd_08
+   072B 12 0A 42           2118 	lcall	_fn_cmd_08
                            2119 ;	tfirm.c 869
    072E                    2120 00115$:
                            2121 ;	tfirm.c 871

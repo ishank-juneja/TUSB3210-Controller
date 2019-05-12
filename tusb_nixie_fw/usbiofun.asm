@@ -1,6 +1,6 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : FreeWare ANSI-C Compiler
-; Version 2.3.0 Tue Apr 16 17:21:30 2019
+; Version 2.3.0 Thu May  9 16:35:10 2019
 
 ;--------------------------------------------------------
 	.module usbiofun
@@ -196,9 +196,9 @@ _fn_cmd_01:
 	ar0 = 0x00
 	ar1 = 0x01
 ;	usbiofun.c 10
-	mov	_P0,#0xF6
+	mov	_P0,#0x00
 ;	usbiofun.c 11
-	mov	_P1,#0xFF
+	mov	_P1,#0x00
 ;	usbiofun.c 15
 	mov	dptr,#_iep1_buffer
 	mov	a,#0x1B
@@ -219,9 +219,9 @@ _fn_cmd_01:
 ;	-----------------------------------------
 _fn_cmd_02:
 ;	usbiofun.c 21
-	mov	_P0,#0xFE
+	mov	_P0,#0xFF
 ;	usbiofun.c 22
-	mov	_P1,#0xBF
+	mov	_P1,#0xFF
 ;	usbiofun.c 26
 	mov	dptr,#_iep1_buffer
 	mov	a,#0x1B
@@ -241,38 +241,26 @@ _fn_cmd_02:
 ;	 function fn_cmd_03
 ;	-----------------------------------------
 _fn_cmd_03:
-;	usbiofun.c 31
-	mov	_P0,#0xFE
 ;	usbiofun.c 32
-	mov	_P1,#0xAF
-;	usbiofun.c 36
-	mov	dptr,#_iep1_buffer
-	mov	a,#0x1B
-	movx	@dptr,a
-;	usbiofun.c 37
-; Peephole 182   used 16 bit load of dptr
-	mov  dptr,#(((0xFF)<<8) + 0x4A)
-	mov	a,#0x01
-	movx	@dptr,a
 00101$:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'fn_cmd_04'
 ;------------------------------------------------------------
-;	usbiofun.c 40
+;	usbiofun.c 34
 ;	-----------------------------------------
 ;	 function fn_cmd_04
 ;	-----------------------------------------
 _fn_cmd_04:
-;	usbiofun.c 41
-	mov	_P0,#0xFF
-;	usbiofun.c 42
-	mov	_P1,#0xD7
-;	usbiofun.c 46
+;	usbiofun.c 35
+	mov	_P0,#0xFE
+;	usbiofun.c 36
+	mov	_P1,#0xAF
+;	usbiofun.c 40
 	mov	dptr,#_iep1_buffer
 	mov	a,#0x1B
 	movx	@dptr,a
-;	usbiofun.c 47
+;	usbiofun.c 41
 ; Peephole 182   used 16 bit load of dptr
 	mov  dptr,#(((0xFF)<<8) + 0x4A)
 	mov	a,#0x01
@@ -282,20 +270,20 @@ _fn_cmd_04:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'fn_cmd_05'
 ;------------------------------------------------------------
-;	usbiofun.c 50
+;	usbiofun.c 44
 ;	-----------------------------------------
 ;	 function fn_cmd_05
 ;	-----------------------------------------
 _fn_cmd_05:
-;	usbiofun.c 51
-	mov	_P0,#0xFE
-;	usbiofun.c 52
-	mov	_P1,#0xD6
-;	usbiofun.c 56
+;	usbiofun.c 45
+	mov	_P0,#0xFF
+;	usbiofun.c 46
+	mov	_P1,#0xD7
+;	usbiofun.c 50
 	mov	dptr,#_iep1_buffer
 	mov	a,#0x1B
 	movx	@dptr,a
-;	usbiofun.c 57
+;	usbiofun.c 51
 ; Peephole 182   used 16 bit load of dptr
 	mov  dptr,#(((0xFF)<<8) + 0x4A)
 	mov	a,#0x01
@@ -305,20 +293,20 @@ _fn_cmd_05:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'fn_cmd_06'
 ;------------------------------------------------------------
-;	usbiofun.c 60
+;	usbiofun.c 54
 ;	-----------------------------------------
 ;	 function fn_cmd_06
 ;	-----------------------------------------
 _fn_cmd_06:
-;	usbiofun.c 61
+;	usbiofun.c 55
 	mov	_P0,#0xFE
-;	usbiofun.c 62
+;	usbiofun.c 56
 	mov	_P1,#0x3B
-;	usbiofun.c 66
+;	usbiofun.c 60
 	mov	dptr,#_iep1_buffer
 	mov	a,#0x1B
 	movx	@dptr,a
-;	usbiofun.c 67
+;	usbiofun.c 61
 ; Peephole 182   used 16 bit load of dptr
 	mov  dptr,#(((0xFF)<<8) + 0x4A)
 	mov	a,#0x01
@@ -328,7 +316,7 @@ _fn_cmd_06:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'fn_cmd_07'
 ;------------------------------------------------------------
-;	usbiofun.c 70
+;	usbiofun.c 64
 ;	-----------------------------------------
 ;	 function fn_cmd_07
 ;	-----------------------------------------
@@ -338,7 +326,7 @@ _fn_cmd_07:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'fn_cmd_08'
 ;------------------------------------------------------------
-;	usbiofun.c 72
+;	usbiofun.c 66
 ;	-----------------------------------------
 ;	 function fn_cmd_08
 ;	-----------------------------------------

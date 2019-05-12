@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 
   char ibuff[64]; // input buffer on host
   char obuff[64]; // output buffer on host
+  //To keep track of port values to be assigned in next cycle
   char P1, P0;
 
   //Variables to keep track of time

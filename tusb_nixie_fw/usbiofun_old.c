@@ -7,8 +7,8 @@ xdata at 0xfe00 BYTE iep1_buffer[0x40];
 xdata at 0xfd80 BYTE oep1_buffer[0x40];
 
 void fn_cmd_01(void) {
-  P0 = 0x00;
-  P1 = 0x00;
+  P0 = 0xF6;
+  P1 = 0xFF;
     
   // Function for CMD_01
   // Simply send back 0x1b, the ESC character
@@ -18,8 +18,8 @@ void fn_cmd_01(void) {
 
 
 void fn_cmd_02(void) {
-  P0 = 0xFF;
-  P1 = 0xFF;
+  P0 = 0xFE;
+  P1 = 0xBF;
     
   // Function for CMD_01
   // Simply send back 0x1b, the ESC character
@@ -28,8 +28,8 @@ void fn_cmd_02(void) {
 }
 
 void fn_cmd_03(void) {
-  P0 = 0xFD;
-  P1 = 0xBF;
+  P0 = 0xFE;
+  P1 = 0xAF;
     
   // Function for CMD_01
   // Simply send back 0x1b, the ESC character
@@ -38,8 +38,8 @@ void fn_cmd_03(void) {
 }
 
 void fn_cmd_04(void) {
-  P0 = 0xFE;
-  P1 = 0xAF;
+  P0 = 0xFF;
+  P1 = 0xD7;
     
   // Function for CMD_01
   // Simply send back 0x1b, the ESC character
@@ -48,8 +48,8 @@ void fn_cmd_04(void) {
 }
 
 void fn_cmd_05(void) {
-  P0 = 0xFF;
-  P1 = 0xD7;
+  P0 = 0xFE;
+  P1 = 0xD6;
     
   // Function for CMD_01
   // Simply send back 0x1b, the ESC character

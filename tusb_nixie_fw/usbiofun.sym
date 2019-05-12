@@ -21,44 +21,36 @@ Symbol Table
   9 A$usbiofun$232                                                 0022 GR
   9 A$usbiofun$233                                                 0024 GR
   9 A$usbiofun$235                                                 0025 GR
-  9 A$usbiofun$245                                                 0026 GR
-  9 A$usbiofun$247                                                 0029 GR
-  9 A$usbiofun$249                                                 002C GR
-  9 A$usbiofun$250                                                 002F GR
-  9 A$usbiofun$251                                                 0031 GR
-  9 A$usbiofun$254                                                 0032 GR
-  9 A$usbiofun$255                                                 0035 GR
-  9 A$usbiofun$256                                                 0037 GR
-  9 A$usbiofun$258                                                 0038 GR
-  9 A$usbiofun$268                                                 0039 GR
-  9 A$usbiofun$270                                                 003C GR
-  9 A$usbiofun$272                                                 003F GR
-  9 A$usbiofun$273                                                 0042 GR
-  9 A$usbiofun$274                                                 0044 GR
-  9 A$usbiofun$277                                                 0045 GR
-  9 A$usbiofun$278                                                 0048 GR
-  9 A$usbiofun$279                                                 004A GR
-  9 A$usbiofun$281                                                 004B GR
-  9 A$usbiofun$291                                                 004C GR
-  9 A$usbiofun$293                                                 004F GR
-  9 A$usbiofun$295                                                 0052 GR
-  9 A$usbiofun$296                                                 0055 GR
-  9 A$usbiofun$297                                                 0057 GR
-  9 A$usbiofun$300                                                 0058 GR
-  9 A$usbiofun$301                                                 005B GR
-  9 A$usbiofun$302                                                 005D GR
-  9 A$usbiofun$304                                                 005E GR
-  9 A$usbiofun$314                                                 005F GR
-  9 A$usbiofun$316                                                 0062 GR
-  9 A$usbiofun$318                                                 0065 GR
-  9 A$usbiofun$319                                                 0068 GR
-  9 A$usbiofun$320                                                 006A GR
-  9 A$usbiofun$323                                                 006B GR
-  9 A$usbiofun$324                                                 006E GR
-  9 A$usbiofun$325                                                 0070 GR
-  9 A$usbiofun$327                                                 0071 GR
-  9 A$usbiofun$337                                                 0072 GR
-  9 A$usbiofun$347                                                 0073 GR
+  9 A$usbiofun$246                                                 0026 GR
+  9 A$usbiofun$256                                                 0027 GR
+  9 A$usbiofun$258                                                 002A GR
+  9 A$usbiofun$260                                                 002D GR
+  9 A$usbiofun$261                                                 0030 GR
+  9 A$usbiofun$262                                                 0032 GR
+  9 A$usbiofun$265                                                 0033 GR
+  9 A$usbiofun$266                                                 0036 GR
+  9 A$usbiofun$267                                                 0038 GR
+  9 A$usbiofun$269                                                 0039 GR
+  9 A$usbiofun$279                                                 003A GR
+  9 A$usbiofun$281                                                 003D GR
+  9 A$usbiofun$283                                                 0040 GR
+  9 A$usbiofun$284                                                 0043 GR
+  9 A$usbiofun$285                                                 0045 GR
+  9 A$usbiofun$288                                                 0046 GR
+  9 A$usbiofun$289                                                 0049 GR
+  9 A$usbiofun$290                                                 004B GR
+  9 A$usbiofun$292                                                 004C GR
+  9 A$usbiofun$302                                                 004D GR
+  9 A$usbiofun$304                                                 0050 GR
+  9 A$usbiofun$306                                                 0053 GR
+  9 A$usbiofun$307                                                 0056 GR
+  9 A$usbiofun$308                                                 0058 GR
+  9 A$usbiofun$311                                                 0059 GR
+  9 A$usbiofun$312                                                 005C GR
+  9 A$usbiofun$313                                                 005E GR
+  9 A$usbiofun$315                                                 005F GR
+  9 A$usbiofun$325                                                 0060 GR
+  9 A$usbiofun$335                                                 0061 GR
     AC                                                             00D6 
     ACC                                                            00E0 
     ACC.0                                                          00E0 
@@ -347,11 +339,11 @@ Symbol Table
   9 _fn_cmd_01                                                     0000 GR
   9 _fn_cmd_02                                                     0013 GR
   9 _fn_cmd_03                                                     0026 GR
-  9 _fn_cmd_04                                                     0039 GR
-  9 _fn_cmd_05                                                     004C GR
-  9 _fn_cmd_06                                                     005F GR
-  9 _fn_cmd_07                                                     0072 GR
-  9 _fn_cmd_08                                                     0073 GR
+  9 _fn_cmd_04                                                     0027 GR
+  9 _fn_cmd_05                                                     003A GR
+  9 _fn_cmd_06                                                     004D GR
+  9 _fn_cmd_07                                                     0060 GR
+  9 _fn_cmd_08                                                     0061 GR
     _iep1_buffer                                                =  FE00 G
     _oep1_buffer                                                =  FD80 G
     a                                                              00D6 
@@ -544,4 +536,4 @@ Area Table
    6 GSINIT                                                                             size    0   flags 20
    7 GSFINAL                                                                            size    0   flags 20
    8 HOME                                                                               size    0   flags 20
-   9 CSEG                                                                               size   74   flags 20
+   9 CSEG                                                                               size   62   flags 20

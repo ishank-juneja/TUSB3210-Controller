@@ -3,9 +3,6 @@
 #include <sys/stat.h>
 #include <libusb-1.0/libusb.h>
 #include "commands.h"
-#include "unistd.h"
-#include <sys/time.h>
-#include <time.h>
 
 #define VID 0x0451
 #define PID 0x3210
@@ -28,9 +25,6 @@ int main(int argc, char *argv[])
   char ibuff[64]; // input buffer on host
   char obuff[64]; // output buffer on host
   
-  //Variables to keep track of time
-  time_t curtime;
-
   // USB handling
   r = libusb_init(NULL);
   if (r < 0)
@@ -54,49 +48,16 @@ int main(int argc, char *argv[])
     return 0;
   }
 
-  while(1)  {
-
   // Send CMD_5 and get the response from TUSB firmware
-  obuff[0] = CMD_01;
+  obuff[0] = CMD_05;
   obuff[1] = 0x01;
   r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
   ibuff[0] = 0;
   r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
-  printf("CMD_01: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
-  sleep(1);
+  printf("CMD_05: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
 
-  // Send CMD_5 and get the response from TUSB firmware// Send CMD_5 and get the response from TUSB firmware
-  obuff[0] = CMD_02;
-  obuff[1] = 0x01;
-  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
-  ibuff[0] = 0;
-  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
-  printf("CMD_02: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
-  sleep(1);
   
-  /*
-  // Send CMD_5 and get the response from TUSB firmware
-  obuff[0] = CMD_03;
-  obuff[1] = 0x01;
-  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
-  ibuff[0] = 0;
-  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
-  printf("CMD_03: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
-  sleep(1);
-  
-  // Send CMD_5 and get the response from TUSB firmware
-  obuff[0] = CMD_04;
-  obuff[1] = 0x01;
-  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
-  ibuff[0] = 0;
-  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
-  printf("CMD_04: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
-
-  sleep(1);
-  */
-  }
-
-  // Done
+// Done
   i = libusb_release_interface(tusb_handle, 0);
   if(i<0) {
     printf("Cannot release intefrace\n");
