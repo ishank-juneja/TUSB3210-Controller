@@ -1,3 +1,4 @@
+/*Host side program to send time information to the TUSB controller*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
@@ -59,14 +60,15 @@ int main(int argc, char *argv[])
     return 0;
   }
 
+  //Host side loop to be executed once every second
   while(1)  {
   //Lookup system time in string format and print message
   time(&curtime);
   time_str = ctime(&curtime);
   printf("Current time = %s", time_str);
-  //const char *str = "01:02:03";
   //Read time into variables
   sscanf(str, "%d:%d:%d", &h, &m, &s);
+  //Verify that information was recorded correctly
   printf ("%d, %d, %d\n", h, m, s);
   //Read in digits into Nixies array
   nixies[5] = h/10;

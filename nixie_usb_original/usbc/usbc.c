@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
   char obuff[64]; // output buffer on host
   
   // USB handling
+
   r = libusb_init(NULL);
   if (r < 0)
     return r;
@@ -48,16 +49,43 @@ int main(int argc, char *argv[])
     return 0;
   }
 
-  // Send CMD_5 and get the response from TUSB firmware
-  obuff[0] = CMD_05;
+  // Send CMD_1 and get the response from TUSB firmware
+  obuff[0] = CMD_01;
   obuff[1] = 0x01;
   r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
   ibuff[0] = 0;
   r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
-  printf("CMD_05: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
+  printf("CMD_01: Received %i bytes: 0x%02x\n", num_bytes, ibuff[0]);
 
+  // Send CMD_2 and get the TUSB response.
+  // We know already that the response is going to be 6 bytes
+  obuff[0] = CMD_02;
+  //obuff[1] = 0x01;
+  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 2, &num_bytes, 500);
+  ibuff[0] = 0;
+  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
+  printf("CMD_02: Received %i bytes: %s\n", num_bytes, ibuff);
+
+  // Send CMD_3 and get response
+  obuff[0] = CMD_03;
+  obuff[1] = 0x01;
+  obuff[2] = 0x1a;
+  obuff[3] = 0x1b;
+  obuff[4] = 0x1c;
+  obuff[5] = 0x1d;
+  obuff[6] = 0x1e;
+  obuff[7] = 0x1f;
+
+  r = libusb_bulk_transfer(tusb_handle, EP_OUT, obuff, 8, &num_bytes, 500);
+  for(i=0; i<8; i++)
+    ibuff[i] = 0;
+
+  r = libusb_bulk_transfer(tusb_handle, EP_IN, ibuff, 64, &num_bytes, 500);
+  printf("CMD_03: Received %i bytes:\n", num_bytes);
+  for(i=0; i<num_bytes; i++)
+    printf("0x%02x\n", ibuff[i]);
   
-// Done
+  // Done
   i = libusb_release_interface(tusb_handle, 0);
   if(i<0) {
     printf("Cannot release intefrace\n");
@@ -66,6 +94,8 @@ int main(int argc, char *argv[])
 
   libusb_close(tusb_handle);
   libusb_exit(NULL);
+
+  
   
   return 0;
 }

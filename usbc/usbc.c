@@ -1,3 +1,5 @@
+/*Host computer side program to execute basic commands*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
@@ -28,9 +30,6 @@ int main(int argc, char *argv[])
   char ibuff[64]; // input buffer on host
   char obuff[64]; // output buffer on host
   
-  //Variables to keep track of time
-  time_t curtime;
-
   // USB handling
   r = libusb_init(NULL);
   if (r < 0)
