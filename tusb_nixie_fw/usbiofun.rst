@@ -1,6 +1,6 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : FreeWare ANSI-C Compiler
-                              3 ; Version 2.3.0 Thu May  9 16:35:10 2019
+                              3 ; Version 2.3.0 Mon May 13 16:50:08 2019
                               4 
                               5 ;--------------------------------------------------------
                               6 	.module usbiofun
@@ -241,96 +241,114 @@
                             241 ;	 function fn_cmd_03
                             242 ;	-----------------------------------------
    0A07                     243 _fn_cmd_03:
-                            244 ;	usbiofun.c 32
-   0A07                     245 00101$:
-   0A07 22                  246 	ret
-                            247 ;------------------------------------------------------------
-                            248 ;Allocation info for local variables in function 'fn_cmd_04'
-                            249 ;------------------------------------------------------------
+                            244 ;	usbiofun.c 31
+   0A07 75 80 FF            245 	mov	_P0,#0xFF
+                            246 ;	usbiofun.c 32
+   0A0A 75 90 FF            247 	mov	_P1,#0xFF
+                            248 ;	usbiofun.c 33
+   0A0D C2 82               249 	clr	_P0_2
                             250 ;	usbiofun.c 34
-                            251 ;	-----------------------------------------
-                            252 ;	 function fn_cmd_04
-                            253 ;	-----------------------------------------
-   0A08                     254 _fn_cmd_04:
-                            255 ;	usbiofun.c 35
-   0A08 75 80 FE            256 	mov	_P0,#0xFE
-                            257 ;	usbiofun.c 36
-   0A0B 75 90 AF            258 	mov	_P1,#0xAF
-                            259 ;	usbiofun.c 40
-   0A0E 90 FE 00            260 	mov	dptr,#_iep1_buffer
-   0A11 74 1B               261 	mov	a,#0x1B
-   0A13 F0                  262 	movx	@dptr,a
-                            263 ;	usbiofun.c 41
-                            264 ; Peephole 182   used 16 bit load of dptr
-   0A14 90 FF 4A            265 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   0A17 74 01               266 	mov	a,#0x01
-   0A19 F0                  267 	movx	@dptr,a
-   0A1A                     268 00101$:
-   0A1A 22                  269 	ret
-                            270 ;------------------------------------------------------------
-                            271 ;Allocation info for local variables in function 'fn_cmd_05'
-                            272 ;------------------------------------------------------------
+   0A0F C2 95               251 	clr	_P1_5
+                            252 ;	usbiofun.c 35
+   0A11 C2 96               253 	clr	_P1_6
+                            254 ;	usbiofun.c 39
+   0A13 90 FE 00            255 	mov	dptr,#_iep1_buffer
+   0A16 74 1B               256 	mov	a,#0x1B
+   0A18 F0                  257 	movx	@dptr,a
+                            258 ;	usbiofun.c 40
+                            259 ; Peephole 182   used 16 bit load of dptr
+   0A19 90 FF 4A            260 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   0A1C 74 01               261 	mov	a,#0x01
+   0A1E F0                  262 	movx	@dptr,a
+   0A1F                     263 00101$:
+   0A1F 22                  264 	ret
+                            265 ;------------------------------------------------------------
+                            266 ;Allocation info for local variables in function 'fn_cmd_04'
+                            267 ;------------------------------------------------------------
+                            268 ;	usbiofun.c 43
+                            269 ;	-----------------------------------------
+                            270 ;	 function fn_cmd_04
+                            271 ;	-----------------------------------------
+   0A20                     272 _fn_cmd_04:
                             273 ;	usbiofun.c 44
-                            274 ;	-----------------------------------------
-                            275 ;	 function fn_cmd_05
-                            276 ;	-----------------------------------------
-   0A1B                     277 _fn_cmd_05:
-                            278 ;	usbiofun.c 45
-   0A1B 75 80 FF            279 	mov	_P0,#0xFF
-                            280 ;	usbiofun.c 46
-   0A1E 75 90 D7            281 	mov	_P1,#0xD7
-                            282 ;	usbiofun.c 50
-   0A21 90 FE 00            283 	mov	dptr,#_iep1_buffer
-   0A24 74 1B               284 	mov	a,#0x1B
-   0A26 F0                  285 	movx	@dptr,a
-                            286 ;	usbiofun.c 51
-                            287 ; Peephole 182   used 16 bit load of dptr
-   0A27 90 FF 4A            288 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   0A2A 74 01               289 	mov	a,#0x01
-   0A2C F0                  290 	movx	@dptr,a
-   0A2D                     291 00101$:
-   0A2D 22                  292 	ret
-                            293 ;------------------------------------------------------------
-                            294 ;Allocation info for local variables in function 'fn_cmd_06'
-                            295 ;------------------------------------------------------------
+   0A20 75 80 FF            274 	mov	_P0,#0xFF
+                            275 ;	usbiofun.c 45
+   0A23 75 90 FF            276 	mov	_P1,#0xFF
+                            277 ;	usbiofun.c 49
+   0A26 90 FE 00            278 	mov	dptr,#_iep1_buffer
+   0A29 74 1B               279 	mov	a,#0x1B
+   0A2B F0                  280 	movx	@dptr,a
+                            281 ;	usbiofun.c 50
+                            282 ; Peephole 182   used 16 bit load of dptr
+   0A2C 90 FF 4A            283 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   0A2F 74 01               284 	mov	a,#0x01
+   0A31 F0                  285 	movx	@dptr,a
+   0A32                     286 00101$:
+   0A32 22                  287 	ret
+                            288 ;------------------------------------------------------------
+                            289 ;Allocation info for local variables in function 'fn_cmd_05'
+                            290 ;------------------------------------------------------------
+                            291 ;	usbiofun.c 53
+                            292 ;	-----------------------------------------
+                            293 ;	 function fn_cmd_05
+                            294 ;	-----------------------------------------
+   0A33                     295 _fn_cmd_05:
                             296 ;	usbiofun.c 54
-                            297 ;	-----------------------------------------
-                            298 ;	 function fn_cmd_06
-                            299 ;	-----------------------------------------
-   0A2E                     300 _fn_cmd_06:
-                            301 ;	usbiofun.c 55
-   0A2E 75 80 FE            302 	mov	_P0,#0xFE
-                            303 ;	usbiofun.c 56
-   0A31 75 90 3B            304 	mov	_P1,#0x3B
-                            305 ;	usbiofun.c 60
-   0A34 90 FE 00            306 	mov	dptr,#_iep1_buffer
-   0A37 74 1B               307 	mov	a,#0x1B
-   0A39 F0                  308 	movx	@dptr,a
-                            309 ;	usbiofun.c 61
-                            310 ; Peephole 182   used 16 bit load of dptr
-   0A3A 90 FF 4A            311 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   0A3D 74 01               312 	mov	a,#0x01
-   0A3F F0                  313 	movx	@dptr,a
-   0A40                     314 00101$:
-   0A40 22                  315 	ret
-                            316 ;------------------------------------------------------------
-                            317 ;Allocation info for local variables in function 'fn_cmd_07'
-                            318 ;------------------------------------------------------------
+   0A33 75 80 FF            297 	mov	_P0,#0xFF
+                            298 ;	usbiofun.c 55
+   0A36 75 90 D7            299 	mov	_P1,#0xD7
+                            300 ;	usbiofun.c 59
+   0A39 90 FE 00            301 	mov	dptr,#_iep1_buffer
+   0A3C 74 1B               302 	mov	a,#0x1B
+   0A3E F0                  303 	movx	@dptr,a
+                            304 ;	usbiofun.c 60
+                            305 ; Peephole 182   used 16 bit load of dptr
+   0A3F 90 FF 4A            306 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   0A42 74 01               307 	mov	a,#0x01
+   0A44 F0                  308 	movx	@dptr,a
+   0A45                     309 00101$:
+   0A45 22                  310 	ret
+                            311 ;------------------------------------------------------------
+                            312 ;Allocation info for local variables in function 'fn_cmd_06'
+                            313 ;------------------------------------------------------------
+                            314 ;	usbiofun.c 63
+                            315 ;	-----------------------------------------
+                            316 ;	 function fn_cmd_06
+                            317 ;	-----------------------------------------
+   0A46                     318 _fn_cmd_06:
                             319 ;	usbiofun.c 64
-                            320 ;	-----------------------------------------
-                            321 ;	 function fn_cmd_07
-                            322 ;	-----------------------------------------
-   0A41                     323 _fn_cmd_07:
-   0A41                     324 00101$:
-   0A41 22                  325 	ret
-                            326 ;------------------------------------------------------------
-                            327 ;Allocation info for local variables in function 'fn_cmd_08'
-                            328 ;------------------------------------------------------------
-                            329 ;	usbiofun.c 66
-                            330 ;	-----------------------------------------
-                            331 ;	 function fn_cmd_08
-                            332 ;	-----------------------------------------
-   0A42                     333 _fn_cmd_08:
-   0A42                     334 00101$:
-   0A42 22                  335 	ret
-                            336 	.area CSEG    (CODE)
+   0A46 75 80 FE            320 	mov	_P0,#0xFE
+                            321 ;	usbiofun.c 65
+   0A49 75 90 3B            322 	mov	_P1,#0x3B
+                            323 ;	usbiofun.c 69
+   0A4C 90 FE 00            324 	mov	dptr,#_iep1_buffer
+   0A4F 74 1B               325 	mov	a,#0x1B
+   0A51 F0                  326 	movx	@dptr,a
+                            327 ;	usbiofun.c 70
+                            328 ; Peephole 182   used 16 bit load of dptr
+   0A52 90 FF 4A            329 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   0A55 74 01               330 	mov	a,#0x01
+   0A57 F0                  331 	movx	@dptr,a
+   0A58                     332 00101$:
+   0A58 22                  333 	ret
+                            334 ;------------------------------------------------------------
+                            335 ;Allocation info for local variables in function 'fn_cmd_07'
+                            336 ;------------------------------------------------------------
+                            337 ;	usbiofun.c 73
+                            338 ;	-----------------------------------------
+                            339 ;	 function fn_cmd_07
+                            340 ;	-----------------------------------------
+   0A59                     341 _fn_cmd_07:
+   0A59                     342 00101$:
+   0A59 22                  343 	ret
+                            344 ;------------------------------------------------------------
+                            345 ;Allocation info for local variables in function 'fn_cmd_08'
+                            346 ;------------------------------------------------------------
+                            347 ;	usbiofun.c 75
+                            348 ;	-----------------------------------------
+                            349 ;	 function fn_cmd_08
+                            350 ;	-----------------------------------------
+   0A5A                     351 _fn_cmd_08:
+   0A5A                     352 00101$:
+   0A5A 22                  353 	ret
+                            354 	.area CSEG    (CODE)

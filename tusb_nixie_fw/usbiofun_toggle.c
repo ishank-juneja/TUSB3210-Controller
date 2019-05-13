@@ -28,13 +28,7 @@ void fn_cmd_02(void) {
 }
 
 void fn_cmd_03(void) {
-  P0 = 0xFD;
-  P1 = 0xBF;
-    
-  // Function for CMD_01
-  // Simply send back 0x1b, the ESC character
-  iep1_buffer[0] = 0x1b;
-  bIEPDCTX_1 = 1; 
+ 
 }
 
 void fn_cmd_04(void) {

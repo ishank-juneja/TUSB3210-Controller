@@ -1,6 +1,6 @@
 ;!FILE usbiofun.asm
 XH
-H A areas 3A global symbols
+H A areas 45 global symbols
 M usbiofun
 S _iep1_buffer DefFE00
 S _oep1_buffer DefFD80
@@ -13,63 +13,74 @@ A XSEG size 0 flags 40
 A GSINIT size 0 flags 20
 A GSFINAL size 0 flags 20
 A HOME size 0 flags 20
-A CSEG size 62 flags 20
+A CSEG size 7A flags 20
 S _fn_cmd_01 Def0000
 S _fn_cmd_02 Def0013
 S _fn_cmd_03 Def0026
-S _fn_cmd_04 Def0027
-S _fn_cmd_05 Def003A
-S _fn_cmd_06 Def004D
-S _fn_cmd_07 Def0060
-S _fn_cmd_08 Def0061
+S _fn_cmd_04 Def003F
+S _fn_cmd_05 Def0052
+S _fn_cmd_06 Def0065
+S _fn_cmd_07 Def0078
+S _fn_cmd_08 Def0079
 S A$usbiofun$210 Def0011
 S A$usbiofun$201 Def0003
-S A$usbiofun$311 Def0059
-S A$usbiofun$302 Def004D
+S A$usbiofun$310 Def0064
+S A$usbiofun$301 Def0058
+S A$usbiofun$320 Def0065
+S A$usbiofun$302 Def005B
 S A$usbiofun$212 Def0012
 S A$usbiofun$203 Def0006
-S A$usbiofun$312 Def005C
+S A$usbiofun$330 Def0074
+S A$usbiofun$303 Def005D
 S A$usbiofun$231 Def001F
 S A$usbiofun$222 Def0013
 S A$usbiofun$204 Def0009
-S A$usbiofun$313 Def005E
-S A$usbiofun$304 Def0050
+S A$usbiofun$331 Def0076
+S A$usbiofun$322 Def0068
 S A$usbiofun$232 Def0022
 S A$usbiofun$205 Def000B
-S A$usbiofun$260 Def002D
+S A$usbiofun$260 Def0038
+S A$usbiofun$251 Def002E
 S A$usbiofun$233 Def0024
 S A$usbiofun$224 Def0016
-S A$usbiofun$315 Def005F
-S A$usbiofun$306 Def0053
-S A$usbiofun$261 Def0030
-S A$usbiofun$325 Def0060
-S A$usbiofun$307 Def0056
-S A$usbiofun$262 Def0032
+S A$usbiofun$333 Def0077
+S A$usbiofun$324 Def006B
+S A$usbiofun$306 Def005E
+S A$usbiofun$261 Def003B
+S A$usbiofun$343 Def0078
+S A$usbiofun$325 Def006E
+S A$usbiofun$307 Def0061
+S A$usbiofun$280 Def004A
+S A$usbiofun$262 Def003D
+S A$usbiofun$253 Def0030
 S A$usbiofun$235 Def0025
 S A$usbiofun$226 Def0019
 S A$usbiofun$208 Def000C
-S A$usbiofun$335 Def0061
-S A$usbiofun$308 Def0058
-S A$usbiofun$290 Def004B
-S A$usbiofun$281 Def003D
+S A$usbiofun$353 Def0079
+S A$usbiofun$326 Def0070
+S A$usbiofun$308 Def0063
+S A$usbiofun$245 Def0026
 S A$usbiofun$227 Def001C
 S A$usbiofun$209 Def000F
-S A$usbiofun$246 Def0026
+S A$usbiofun$264 Def003E
+S A$usbiofun$255 Def0032
 S A$usbiofun$228 Def001E
-S A$usbiofun$292 Def004C
-S A$usbiofun$283 Def0040
-S A$usbiofun$265 Def0033
-S A$usbiofun$256 Def0027
-S A$usbiofun$284 Def0043
-S A$usbiofun$266 Def0036
-S A$usbiofun$285 Def0045
-S A$usbiofun$267 Def0038
-S A$usbiofun$258 Def002A
-S A$usbiofun$269 Def0039
-S A$usbiofun$288 Def0046
-S A$usbiofun$279 Def003A
-S A$usbiofun$289 Def0049
+S A$usbiofun$283 Def004B
+S A$usbiofun$274 Def003F
+S A$usbiofun$256 Def0035
+S A$usbiofun$247 Def0029
+S A$usbiofun$329 Def0071
+S A$usbiofun$284 Def004E
+S A$usbiofun$257 Def0037
+S A$usbiofun$285 Def0050
+S A$usbiofun$276 Def0042
+S A$usbiofun$249 Def002C
+S A$usbiofun$287 Def0051
+S A$usbiofun$278 Def0045
+S A$usbiofun$297 Def0052
+S A$usbiofun$279 Def0048
 S A$usbiofun$199 Def0000
+S A$usbiofun$299 Def0055
 T 00 00
 R 00 00 00 09
 T 00 00 75 80 00 75 90 00 90 FE 00 74 1B F0 90
@@ -92,49 +103,53 @@ T 00 25 22
 R 00 00 00 09
 T 00 26
 R 00 00 00 09
-T 00 26
+T 00 26 75 80 FF 75 90 FF C2 82 C2 95 C2 96 90
 R 00 00 00 09
-T 00 26 22
+T 00 33 FE 00 74 1B F0 90 FF 4A 74 01 F0
 R 00 00 00 09
-T 00 27
+T 00 3E
 R 00 00 00 09
-T 00 27 75 80 FE 75 90 AF 90 FE 00 74 1B F0 90
+T 00 3E 22
 R 00 00 00 09
-T 00 34 FF 4A 74 01 F0
+T 00 3F
 R 00 00 00 09
-T 00 39
+T 00 3F 75 80 FF 75 90 FF 90 FE 00 74 1B F0 90
 R 00 00 00 09
-T 00 39 22
+T 00 4C FF 4A 74 01 F0
 R 00 00 00 09
-T 00 3A
+T 00 51
 R 00 00 00 09
-T 00 3A 75 80 FF 75 90 D7 90 FE 00 74 1B F0 90
+T 00 51 22
 R 00 00 00 09
-T 00 47 FF 4A 74 01 F0
+T 00 52
 R 00 00 00 09
-T 00 4C
+T 00 52 75 80 FF 75 90 D7 90 FE 00 74 1B F0 90
 R 00 00 00 09
-T 00 4C 22
+T 00 5F FF 4A 74 01 F0
 R 00 00 00 09
-T 00 4D
+T 00 64
 R 00 00 00 09
-T 00 4D 75 80 FE 75 90 3B 90 FE 00 74 1B F0 90
+T 00 64 22
 R 00 00 00 09
-T 00 5A FF 4A 74 01 F0
+T 00 65
 R 00 00 00 09
-T 00 5F
+T 00 65 75 80 FE 75 90 3B 90 FE 00 74 1B F0 90
 R 00 00 00 09
-T 00 5F 22
+T 00 72 FF 4A 74 01 F0
 R 00 00 00 09
-T 00 60
+T 00 77
 R 00 00 00 09
-T 00 60
+T 00 77 22
 R 00 00 00 09
-T 00 60 22
+T 00 78
 R 00 00 00 09
-T 00 61
+T 00 78
 R 00 00 00 09
-T 00 61
+T 00 78 22
 R 00 00 00 09
-T 00 61 22
+T 00 79
+R 00 00 00 09
+T 00 79
+R 00 00 00 09
+T 00 79 22
 R 00 00 00 09

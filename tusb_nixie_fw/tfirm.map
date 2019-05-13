@@ -27,10 +27,10 @@ Area                               Addr   Size   Decimal Bytes (Attributes)
      0057    s__DUMMY
      0080    s_ISEG
      00A0    l_ISEG
-     0AA0    l_CSEG
-     0AA0    s_GSINIT
-     0AC4    s_GSFINAL
-     0AC7    s_HOME
+     0AB8    l_CSEG
+     0AB8    s_GSINIT
+     0ADC    s_GSFINAL
+     0ADF    s_HOME
      FD80    _oep1_buffer
      FD80    _pbOEP1XBufferAddress
      FDC0    _pbOEP1YBufferAddress
@@ -133,7 +133,7 @@ Hexadecimal
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-CSEG                               0000   0AA0 =   2720. bytes (REL,CON,CODE)
+CSEG                               0000   0AB8 =   2744. bytes (REL,CON,CODE)
 
       Value  Global
    --------  --------------------------------
@@ -1343,142 +1343,153 @@ CSEG                               0000   0AA0 =   2720. bytes (REL,CON,CODE)
   0C:0A03    A$usbiofun$232
   0C:0A05    A$usbiofun$233
   0C:0A06    A$usbiofun$235
-  0C:0A07    A$usbiofun$246
+  0C:0A07    A$usbiofun$245
   0C:0A07    _fn_cmd_03
-  0C:0A08    A$usbiofun$256
-  0C:0A08    _fn_cmd_04
-  0C:0A0B    A$usbiofun$258
-  0C:0A0E    A$usbiofun$260
-  0C:0A11    A$usbiofun$261
-  0C:0A13    A$usbiofun$262
-  0C:0A14    A$usbiofun$265
-  0C:0A17    A$usbiofun$266
-  0C:0A19    A$usbiofun$267
-  0C:0A1A    A$usbiofun$269
-  0C:0A1B    A$usbiofun$279
-  0C:0A1B    _fn_cmd_05
-  0C:0A1E    A$usbiofun$281
-  0C:0A21    A$usbiofun$283
-  0C:0A24    A$usbiofun$284
-  0C:0A26    A$usbiofun$285
-  0C:0A27    A$usbiofun$288
-  0C:0A2A    A$usbiofun$289
-  0C:0A2C    A$usbiofun$290
-  0C:0A2D    A$usbiofun$292
-  0C:0A2E    A$usbiofun$302
-  0C:0A2E    _fn_cmd_06
-  0C:0A31    A$usbiofun$304
-  0C:0A34    A$usbiofun$306
-  0C:0A37    A$usbiofun$307
-  0C:0A39    A$usbiofun$308
-  0C:0A3A    A$usbiofun$311
-  0C:0A3D    A$usbiofun$312
-  0C:0A3F    A$usbiofun$313
-  0C:0A40    A$usbiofun$315
-  0C:0A41    A$usbiofun$325
-  0C:0A41    _fn_cmd_07
-  0C:0A42    A$usbiofun$335
-  0C:0A42    _fn_cmd_08
-  0C:0A43    A$_startup$70
-  0C:0A43    __sdcc_external_startup
-  0C:0A46    A$_startup$72
-  0C:0A47    A$_gptrput$70
-  0C:0A47    __gptrput
-  0C:0A48    A$_gptrput$71
-  0C:0A4A    A$_gptrput$72
-  0C:0A4B    A$_gptrput$73
-  0C:0A4D    A$_gptrput$77
-  0C:0A4F    A$_gptrput$78
-  0C:0A51    A$_gptrput$79
-  0C:0A52    A$_gptrput$80
-  0C:0A54    A$_gptrput$81
-  0C:0A55    A$_gptrput$82
-  0C:0A57    A$_gptrput$83
-  0C:0A58    A$_gptrput$84
-  0C:0A5A    A$_gptrput$85
-  0C:0A5C    A$_gptrput$86
-  0C:0A5E    A$_gptrput$91
-  0C:0A60    A$_gptrput$92
-  0C:0A62    A$_gptrput$93
-  0C:0A63    A$_gptrput$94
-  0C:0A65    A$_gptrput$96
-  0C:0A67    A$_gptrput$97
-  0C:0A68    A$_gptrput$98
-  0C:0A6A    A$_gptrput$100
-  0C:0A6C    A$_gptrput$101
-  0C:0A6E    A$_gptrput$103
-  0C:0A70    A$_gptrput$104
-  0C:0A72    A$_gptrput$105
-  0C:0A73    A$_gptrput$107
-  0C:0A74    A$_gptrput$108
-  0C:0A76    A$_gptrput$109
-  0C:0A77    A$_gptrput$111
-  0C:0A78    A$_gptrget$71
-  0C:0A78    __gptrget
-  0C:0A79    A$_gptrget$72
-  0C:0A7B    A$_gptrget$76
-  0C:0A7D    A$_gptrget$77
-  0C:0A7F    A$_gptrget$78
-  0C:0A80    A$_gptrget$79
-  0C:0A82    A$_gptrget$80
-  0C:0A83    A$_gptrget$81
-  0C:0A85    A$_gptrget$82
-  0C:0A86    A$_gptrget$83
-  0C:0A88    A$_gptrget$87
-  0C:0A8A    A$_gptrget$88
-  0C:0A8C    A$_gptrget$93
-  0C:0A8E    A$_gptrget$94
-  0C:0A8F    A$_gptrget$95
-  0C:0A91    A$_gptrget$100
-  0C:0A92    A$_gptrget$101
-  0C:0A94    A$_gptrget$106
-  0C:0A95    A$_gptrget$107
-  0C:0A96    A$_gptrget$108
-  0C:0A98    A$_gptrget$113
-  0C:0A9A    A$_gptrget$114
-  0C:0A9B    A$_gptrget$119
-  0C:0A9C    A$_gptrget$120
-  0C:0A9E    A$_gptrget$121
-  0C:0A9F    A$_gptrget$123
+  0C:0A0A    A$usbiofun$247
+  0C:0A0D    A$usbiofun$249
+  0C:0A0F    A$usbiofun$251
+  0C:0A11    A$usbiofun$253
+  0C:0A13    A$usbiofun$255
+  0C:0A16    A$usbiofun$256
+  0C:0A18    A$usbiofun$257
+  0C:0A19    A$usbiofun$260
+  0C:0A1C    A$usbiofun$261
+  0C:0A1E    A$usbiofun$262
+  0C:0A1F    A$usbiofun$264
+  0C:0A20    A$usbiofun$274
+  0C:0A20    _fn_cmd_04
+  0C:0A23    A$usbiofun$276
+  0C:0A26    A$usbiofun$278
+  0C:0A29    A$usbiofun$279
+  0C:0A2B    A$usbiofun$280
+  0C:0A2C    A$usbiofun$283
+  0C:0A2F    A$usbiofun$284
+  0C:0A31    A$usbiofun$285
+  0C:0A32    A$usbiofun$287
+  0C:0A33    A$usbiofun$297
+  0C:0A33    _fn_cmd_05
+  0C:0A36    A$usbiofun$299
+  0C:0A39    A$usbiofun$301
+  0C:0A3C    A$usbiofun$302
+  0C:0A3E    A$usbiofun$303
+  0C:0A3F    A$usbiofun$306
+  0C:0A42    A$usbiofun$307
+  0C:0A44    A$usbiofun$308
+  0C:0A45    A$usbiofun$310
+  0C:0A46    A$usbiofun$320
+  0C:0A46    _fn_cmd_06
+  0C:0A49    A$usbiofun$322
+  0C:0A4C    A$usbiofun$324
+  0C:0A4F    A$usbiofun$325
+  0C:0A51    A$usbiofun$326
+  0C:0A52    A$usbiofun$329
+  0C:0A55    A$usbiofun$330
+  0C:0A57    A$usbiofun$331
+  0C:0A58    A$usbiofun$333
+  0C:0A59    A$usbiofun$343
+  0C:0A59    _fn_cmd_07
+  0C:0A5A    A$usbiofun$353
+  0C:0A5A    _fn_cmd_08
+  0C:0A5B    A$_startup$70
+  0C:0A5B    __sdcc_external_startup
+  0C:0A5E    A$_startup$72
+  0C:0A5F    A$_gptrput$70
+  0C:0A5F    __gptrput
+  0C:0A60    A$_gptrput$71
+  0C:0A62    A$_gptrput$72
+  0C:0A63    A$_gptrput$73
+  0C:0A65    A$_gptrput$77
+  0C:0A67    A$_gptrput$78
+  0C:0A69    A$_gptrput$79
+  0C:0A6A    A$_gptrput$80
+  0C:0A6C    A$_gptrput$81
+  0C:0A6D    A$_gptrput$82
+  0C:0A6F    A$_gptrput$83
+  0C:0A70    A$_gptrput$84
+  0C:0A72    A$_gptrput$85
+  0C:0A74    A$_gptrput$86
+  0C:0A76    A$_gptrput$91
+  0C:0A78    A$_gptrput$92
+  0C:0A7A    A$_gptrput$93
+  0C:0A7B    A$_gptrput$94
+  0C:0A7D    A$_gptrput$96
+  0C:0A7F    A$_gptrput$97
+  0C:0A80    A$_gptrput$98
+  0C:0A82    A$_gptrput$100
+  0C:0A84    A$_gptrput$101
+  0C:0A86    A$_gptrput$103
+  0C:0A88    A$_gptrput$104
+  0C:0A8A    A$_gptrput$105
+  0C:0A8B    A$_gptrput$107
+  0C:0A8C    A$_gptrput$108
+  0C:0A8E    A$_gptrput$109
+  0C:0A8F    A$_gptrput$111
+  0C:0A90    A$_gptrget$71
+  0C:0A90    __gptrget
+  0C:0A91    A$_gptrget$72
+  0C:0A93    A$_gptrget$76
+  0C:0A95    A$_gptrget$77
+  0C:0A97    A$_gptrget$78
+  0C:0A98    A$_gptrget$79
+  0C:0A9A    A$_gptrget$80
+  0C:0A9B    A$_gptrget$81
+  0C:0A9D    A$_gptrget$82
+  0C:0A9E    A$_gptrget$83
+  0C:0AA0    A$_gptrget$87
+  0C:0AA2    A$_gptrget$88
+  0C:0AA4    A$_gptrget$93
+  0C:0AA6    A$_gptrget$94
+  0C:0AA7    A$_gptrget$95
+  0C:0AA9    A$_gptrget$100
+  0C:0AAA    A$_gptrget$101
+  0C:0AAC    A$_gptrget$106
+  0C:0AAD    A$_gptrget$107
+  0C:0AAE    A$_gptrget$108
+  0C:0AB0    A$_gptrget$113
+  0C:0AB2    A$_gptrget$114
+  0C:0AB3    A$_gptrget$119
+  0C:0AB4    A$_gptrget$120
+  0C:0AB6    A$_gptrget$121
+  0C:0AB7    A$_gptrget$123
 
 Hexadecimal
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-GSINIT                             0AA0   0024 =     36. bytes (REL,CON,CODE)
+GSINIT                             0AB8   0024 =     36. bytes (REL,CON,CODE)
 
       Value  Global
    --------  --------------------------------
-  0C:0AA0    A$tfirm$340
-  0C:0AA3    A$tfirm$341
-  0C:0AA6    A$tfirm$342
-  0C:0AA8    A$tfirm$343
-  0C:0AAA    A$tfirm$344
-  0C:0AAD    A$tfirm$347
-  0C:0AB0    A$tfirm$349
-  0C:0AB1    A$tfirm$350
-  0C:0AB3    A$tfirm$351
-  0C:0AB5    A$tfirm$353
-  0C:0AB8    A$tfirm$355
-  0C:0ABB    A$tfirm$357
-  0C:0ABE    A$tfirm$359
-  0C:0AC1    A$tfirm$361
+  0C:0AB8    A$tfirm$340
+  0C:0ABB    A$tfirm$341
+  0C:0ABE    A$tfirm$342
+  0C:0AC0    A$tfirm$343
+  0C:0AC2    A$tfirm$344
+  0C:0AC5    A$tfirm$347
+  0C:0AC8    A$tfirm$349
+  0C:0AC9    A$tfirm$350
+  0C:0ACB    A$tfirm$351
+  0C:0ACD    A$tfirm$353
+  0C:0AD0    A$tfirm$355
+  0C:0AD3    A$tfirm$357
+  0C:0AD6    A$tfirm$359
+  0C:0AD9    A$tfirm$361
 
 Hexadecimal
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-GSFINAL                            0AC4   0003 =      3. bytes (REL,CON,CODE)
+GSFINAL                            0ADC   0003 =      3. bytes (REL,CON,CODE)
 
       Value  Global
    --------  --------------------------------
-  0C:0AC4    A$tfirm$363
+  0C:0ADC    A$tfirm$363
 
 Hexadecimal
 
 Area                               Addr   Size   Decimal Bytes (Attributes)
 --------------------------------   ----   ----   ------- ----- ------------
-HOME                               0AC7   0000 =      0. bytes (REL,CON,CODE)
+HOME                               0ADF   0000 =      0. bytes (REL,CON,CODE)
 ASxxxx Linker V01.70 + NoICE + SDCC Feb 1999,  page 1.
 
 Files Linked	  [ module(s) ]
