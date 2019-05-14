@@ -7,23 +7,8 @@
 #include "commands.h"
 
 #define MAX_MSP_XMT_BLOCK 124
-//Digit and Tube Mappings
-/*Digit Mappings*/
-#define digA P0_0
-#define digB P1_6
-#define digC P1_5
-#define digD P1_7
-
-/*Tube Mappings*/
-#define T0 P0_3
-#define T1 P0_2
-#define T2 P0_1
-#define T3 P1_4
-#define T4 P1_3
-#define T5 P1_2
 
 /* Global variables */
-
 BYTE deviceReady = FALSE;
 BYTE bStatusAction;
 BYTE bUsbDeviceAddress;
@@ -986,9 +971,6 @@ void usbISR(void) interrupt 0 {
 
 void main(void) {
 
-  int i = 0;
-  char temp_dig;
-  //Don't Change
   bPUR0 = 0x00;
   bPUR1 = 0x00;
   bPUR2 = 0xff;
@@ -1003,142 +985,5 @@ void main(void) {
   P3_2 = 1; // rd\ signal to msp430
 
   SystemInitialization();
-  //Don't Change till here
-  P0 = 0xFF;
-  P1 = 0xFF;
-  //Multiplexed time display loop
-  while(1)  {
-    //T0
-    //Select current tube
-    T0 = 0;	//Active low
-    T1 = 1;
-    T2 = 1;
-    T3 = 1;
-    T4 = 1;
-    T5 = 1;
-    //Select current digit by first converting
-    //decimal to binary
-  
-    digA = ~nixie_digits[0]%2;
-    temp_dig = nixie_digits[0]>>1;
-    digB = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digC = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digD = ~temp_dig%2;
-    
-    
-    //Hold on for a while
-    for(i = 0; i < 1000; i++){}
-	
-    //T1
-    //Select current tube
-    T0 = 1;	//Active low
-    T1 = 0;
-    T2 = 1;
-    T3 = 1;
-    T4 = 1;
-    T5 = 1;
-    //Select current digit by first converting
-    //decimal to binary
-    digA = ~nixie_digits[1]%2;
-    temp_dig = nixie_digits[1]>>1;
-    digB = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digC = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digD = ~temp_dig%2;
-    //Hold on for a while
-    for(i = 0; i < 1000; i++){}
-    
-    //T2
-    //Select current tube
-    T0 = 1;	//Active low
-    T1 = 1;
-    T2 = 0;
-    T3 = 1;
-    T4 = 1;
-    T5 = 1;
-    //Select current digit by first converting
-    //decimal to binary
-  
-    digA = ~nixie_digits[2]%2;
-    temp_dig = nixie_digits[2]>>1;
-    digB = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digC = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digD = ~temp_dig%2;
-    
-    
-    //Hold on for a while
-    for(i = 0; i < 1000; i++){}
-	
-    //T3
-    //Select current tube
-    T0 = 1;	//Active low
-    T1 = 1;
-    T2 = 1;
-    T3 = 0;
-    T4 = 1;
-    T5 = 1;
-    //Select current digit by first converting
-    //decimal to binary
-    digA = ~nixie_digits[3]%2;
-    temp_dig = nixie_digits[3]>>1;
-    digB = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digC = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digD = ~temp_dig%2;
-    //Hold on for a while
-    for(i = 0; i < 1000; i++){}
-
-    //T4
-    //Select current tube
-    T0 = 1;	//Active low
-    T1 = 1;
-    T2 = 1;
-    T3 = 1;
-    T4 = 0;
-    T5 = 1;
-    //Select current digit by first converting
-    //decimal to binary
-  
-    digA = ~nixie_digits[4]%2;
-    temp_dig = nixie_digits[4]>>1;
-    digB = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digC = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digD = ~temp_dig%2;
-    
-    
-    //Hold on for a while
-    for(i = 0; i < 1000; i++){}
-	
-    //T5
-    //Select current tube
-    T0 = 1;	//Active low
-    T1 = 1;
-    T2 = 1;
-    T3 = 1;
-    T4 = 1;
-    T5 = 0;
-    //Select current digit by first converting
-    //decimal to binary
-    digA = ~nixie_digits[5]%2;
-    temp_dig = nixie_digits[5]>>1;
-    digB = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digC = ~temp_dig%2;
-    temp_dig = temp_dig>>1;
-    digD = ~temp_dig%2;
-    //Hold on for a while
-    for(i = 0; i < 1000; i++){}
-
-  }
-    
-
 
 }

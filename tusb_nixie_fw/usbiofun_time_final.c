@@ -3,25 +3,13 @@
 
 #define bIEPDCTX_1              (* (char xdata *)0xFF4A)
 
-//Digit and Tube Mappings
-/*Digit Mappings*/
-#define digA P0_0
-#define digB P1_6
-#define digC P1_5
-#define digD P1_7
-
-/*Tube Mappings*/
-#define T0 P0_3
-#define T1 P0_2
-#define T2 P0_1
-#define T3 P1_4
-#define T4 P1_3
-#define T5 P1_2
-
 xdata at 0xfe00 BYTE iep1_buffer[0x40];
 xdata at 0xfd80 BYTE oep1_buffer[0x40];
 
-//Commands 1-3 are samples shared by prof Mukul
+//Ishank Defined Global array
+char nixie_digits[6];
+
+//Commands 1-3 are illustraive samples shared by prof Mukul
 void fn_cmd_01(void) {
   // Function for CMD_01
   // Simply send back 0x1b, the ESC character
@@ -50,12 +38,15 @@ void fn_cmd_03(void) {
 }
 
 //cmd to display the received digits on the correct
-//tubes for the next one second
-
+//tubes for the next one second interval 
+//Multiplexing is implemented using polling in Main program
+//Would be better if implemented using Timers
 void fn_cmd_04(void) {  
 	//Initiate the display of time using received information
-
-
+  int i;
+  for(i = 0; i < 6; i++) {
+    nixie_digits[i] = oep1_buffer[i+2];
+  }
 	// Simply send back 0x1b,the ESC character
 	//as confirmation that execution of 
 	//displaying the time is initiated 
@@ -63,9 +54,10 @@ void fn_cmd_04(void) {
   bIEPDCTX_1 = 1;
 }
 
-/*Not used
+/*These functions are not used
 void fn_cmd_05(void) {}
 void fn_cmd_06(void) {}
 void fn_cmd_07(void) {}
 void fn_cmd_08(void) {}
 */
+

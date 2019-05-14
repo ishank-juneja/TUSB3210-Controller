@@ -1,11 +1,13 @@
 ;!FILE usbiofun.asm
 XH
-H A areas 45 global symbols
+H B areas 83 global symbols
 M usbiofun
 S _iep1_buffer DefFE00
 S _oep1_buffer DefFD80
 A _CODE size 0 flags 0
-A DSEG size 0 flags 0
+A DSEG size 6 flags 0
+S _nixie_digits Def0000
+A _DUMMY size 0 flags 0
 A OSEG size 0 flags 4
 A ISEG size 0 flags 0
 A BSEG size 0 flags 80
@@ -13,143 +15,234 @@ A XSEG size 0 flags 40
 A GSINIT size 0 flags 20
 A GSFINAL size 0 flags 20
 A HOME size 0 flags 20
-A CSEG size 7A flags 20
+A CSEG size C2 flags 20
 S _fn_cmd_01 Def0000
-S _fn_cmd_02 Def0013
-S _fn_cmd_03 Def0026
-S _fn_cmd_04 Def003F
-S _fn_cmd_05 Def0052
-S _fn_cmd_06 Def0065
-S _fn_cmd_07 Def0078
-S _fn_cmd_08 Def0079
-S A$usbiofun$210 Def0011
-S A$usbiofun$201 Def0003
-S A$usbiofun$310 Def0064
-S A$usbiofun$301 Def0058
-S A$usbiofun$320 Def0065
-S A$usbiofun$302 Def005B
-S A$usbiofun$212 Def0012
-S A$usbiofun$203 Def0006
-S A$usbiofun$330 Def0074
-S A$usbiofun$303 Def005D
-S A$usbiofun$231 Def001F
-S A$usbiofun$222 Def0013
-S A$usbiofun$204 Def0009
-S A$usbiofun$331 Def0076
-S A$usbiofun$322 Def0068
-S A$usbiofun$232 Def0022
-S A$usbiofun$205 Def000B
-S A$usbiofun$260 Def0038
-S A$usbiofun$251 Def002E
-S A$usbiofun$233 Def0024
-S A$usbiofun$224 Def0016
-S A$usbiofun$333 Def0077
-S A$usbiofun$324 Def006B
-S A$usbiofun$306 Def005E
-S A$usbiofun$261 Def003B
-S A$usbiofun$343 Def0078
-S A$usbiofun$325 Def006E
-S A$usbiofun$307 Def0061
+S _fn_cmd_02 Def000D
+S _fn_cmd_03 Def0037
+S _fn_cmd_04 Def006F
+S _fn_cmd_05 Def00BE
+S _fn_cmd_06 Def00BF
+S _fn_cmd_07 Def00C0
+S _fn_cmd_08 Def00C1
+S A$usbiofun$300 Def0062
+S A$usbiofun$210 Def0006
+S A$usbiofun$301 Def0065
+S A$usbiofun$211 Def0009
+S A$usbiofun$311 Def006E
+S A$usbiofun$230 Def0018
+S A$usbiofun$212 Def000B
+S A$usbiofun$321 Def006F
+S A$usbiofun$303 Def0066
+S A$usbiofun$240 Def0025
+S A$usbiofun$331 Def007C
+S A$usbiofun$322 Def0071
+S A$usbiofun$250 Def0030
+S A$usbiofun$241 Def0028
+S A$usbiofun$232 Def0019
+S A$usbiofun$214 Def000C
+S A$usbiofun$205 Def0000
+S A$usbiofun$350 Def0093
+S A$usbiofun$341 Def0086
+S A$usbiofun$251 Def0033
+S A$usbiofun$242 Def002A
+S A$usbiofun$233 Def001C
+S A$usbiofun$224 Def000D
+S A$usbiofun$206 Def0003
+S A$usbiofun$360 Def009E
+S A$usbiofun$342 Def0087
+S A$usbiofun$324 Def0073
+S A$usbiofun$270 Def003F
+S A$usbiofun$252 Def0035
+S A$usbiofun$234 Def001E
+S A$usbiofun$225 Def0010
+S A$usbiofun$207 Def0005
+S A$usbiofun$361 Def00A0
+S A$usbiofun$352 Def0094
+S A$usbiofun$343 Def0088
+S A$usbiofun$334 Def007E
+S A$usbiofun$325 Def0074
+S A$usbiofun$307 Def0068
 S A$usbiofun$280 Def004A
-S A$usbiofun$262 Def003D
-S A$usbiofun$253 Def0030
-S A$usbiofun$235 Def0025
-S A$usbiofun$226 Def0019
-S A$usbiofun$208 Def000C
-S A$usbiofun$353 Def0079
-S A$usbiofun$326 Def0070
-S A$usbiofun$308 Def0063
-S A$usbiofun$245 Def0026
-S A$usbiofun$227 Def001C
-S A$usbiofun$209 Def000F
-S A$usbiofun$264 Def003E
-S A$usbiofun$255 Def0032
-S A$usbiofun$228 Def001E
-S A$usbiofun$283 Def004B
-S A$usbiofun$274 Def003F
-S A$usbiofun$256 Def0035
-S A$usbiofun$247 Def0029
-S A$usbiofun$329 Def0071
-S A$usbiofun$284 Def004E
-S A$usbiofun$257 Def0037
-S A$usbiofun$285 Def0050
-S A$usbiofun$276 Def0042
-S A$usbiofun$249 Def002C
-S A$usbiofun$287 Def0051
-S A$usbiofun$278 Def0045
-S A$usbiofun$297 Def0052
-S A$usbiofun$279 Def0048
-S A$usbiofun$199 Def0000
-S A$usbiofun$299 Def0055
+S A$usbiofun$271 Def0040
+S A$usbiofun$244 Def002B
+S A$usbiofun$226 Def0012
+S A$usbiofun$407 Def00BF
+S A$usbiofun$380 Def00B6
+S A$usbiofun$362 Def00A1
+S A$usbiofun$353 Def0095
+S A$usbiofun$344 Def0089
+S A$usbiofun$335 Def007F
+S A$usbiofun$326 Def0075
+S A$usbiofun$308 Def006B
+S A$usbiofun$281 Def004B
+S A$usbiofun$272 Def0042
+S A$usbiofun$254 Def0036
+S A$usbiofun$236 Def001F
+S A$usbiofun$417 Def00C0
+S A$usbiofun$372 Def00A9
+S A$usbiofun$345 Def008A
+S A$usbiofun$336 Def0081
+S A$usbiofun$327 Def0077
+S A$usbiofun$309 Def006D
+S A$usbiofun$291 Def0059
+S A$usbiofun$282 Def004D
+S A$usbiofun$264 Def0037
+S A$usbiofun$246 Def002E
+S A$usbiofun$237 Def0022
+S A$usbiofun$228 Def0013
+S A$usbiofun$427 Def00C1
+S A$usbiofun$373 Def00AB
+S A$usbiofun$364 Def00A2
+S A$usbiofun$355 Def0096
+S A$usbiofun$346 Def008C
+S A$usbiofun$337 Def0082
+S A$usbiofun$328 Def0078
+S A$usbiofun$292 Def005A
+S A$usbiofun$283 Def004E
+S A$usbiofun$274 Def0044
+S A$usbiofun$265 Def0039
+S A$usbiofun$247 Def002F
+S A$usbiofun$238 Def0024
+S A$usbiofun$229 Def0016
+S A$usbiofun$383 Def00B7
+S A$usbiofun$374 Def00AE
+S A$usbiofun$365 Def00A3
+S A$usbiofun$356 Def0097
+S A$usbiofun$347 Def008E
+S A$usbiofun$338 Def0084
+S A$usbiofun$329 Def007A
+S A$usbiofun$293 Def005B
+S A$usbiofun$284 Def004F
+S A$usbiofun$384 Def00BA
+S A$usbiofun$375 Def00AF
+S A$usbiofun$366 Def00A6
+S A$usbiofun$357 Def0099
+S A$usbiofun$348 Def008F
+S A$usbiofun$339 Def0085
+S A$usbiofun$294 Def005D
+S A$usbiofun$285 Def0051
+S A$usbiofun$267 Def003B
+S A$usbiofun$385 Def00BC
+S A$usbiofun$358 Def009B
+S A$usbiofun$349 Def0091
+S A$usbiofun$295 Def005F
+S A$usbiofun$286 Def0053
+S A$usbiofun$277 Def0046
+S A$usbiofun$268 Def003C
+S A$usbiofun$377 Def00B0
+S A$usbiofun$359 Def009C
+S A$usbiofun$296 Def0060
+S A$usbiofun$287 Def0054
+S A$usbiofun$278 Def0047
+S A$usbiofun$269 Def003D
+S A$usbiofun$387 Def00BD
+S A$usbiofun$378 Def00B2
+S A$usbiofun$369 Def00A7
+S A$usbiofun$288 Def0056
+S A$usbiofun$279 Def0049
+S A$usbiofun$397 Def00BE
+S A$usbiofun$379 Def00B5
+S A$usbiofun$289 Def0058
+S A$usbiofun$299 Def0061
 T 00 00
-R 00 00 00 09
-T 00 00 75 80 00 75 90 00 90 FE 00 74 1B F0 90
-R 00 00 00 09
-T 00 0D FF 4A 74 01 F0
-R 00 00 00 09
-T 00 12
-R 00 00 00 09
-T 00 12 22
-R 00 00 00 09
-T 00 13
-R 00 00 00 09
-T 00 13 75 80 FF 75 90 FF 90 FE 00 74 1B F0 90
-R 00 00 00 09
-T 00 20 FF 4A 74 01 F0
-R 00 00 00 09
-T 00 25
-R 00 00 00 09
-T 00 25 22
-R 00 00 00 09
-T 00 26
-R 00 00 00 09
-T 00 26 75 80 FF 75 90 FF C2 82 C2 95 C2 96 90
-R 00 00 00 09
-T 00 33 FE 00 74 1B F0 90 FF 4A 74 01 F0
-R 00 00 00 09
-T 00 3E
-R 00 00 00 09
-T 00 3E 22
-R 00 00 00 09
-T 00 3F
-R 00 00 00 09
-T 00 3F 75 80 FF 75 90 FF 90 FE 00 74 1B F0 90
-R 00 00 00 09
-T 00 4C FF 4A 74 01 F0
-R 00 00 00 09
-T 00 51
-R 00 00 00 09
-T 00 51 22
-R 00 00 00 09
-T 00 52
-R 00 00 00 09
-T 00 52 75 80 FF 75 90 D7 90 FE 00 74 1B F0 90
-R 00 00 00 09
-T 00 5F FF 4A 74 01 F0
-R 00 00 00 09
-T 00 64
-R 00 00 00 09
-T 00 64 22
-R 00 00 00 09
-T 00 65
-R 00 00 00 09
-T 00 65 75 80 FE 75 90 3B 90 FE 00 74 1B F0 90
-R 00 00 00 09
-T 00 72 FF 4A 74 01 F0
-R 00 00 00 09
-T 00 77
-R 00 00 00 09
-T 00 77 22
-R 00 00 00 09
-T 00 78
-R 00 00 00 09
-T 00 78
-R 00 00 00 09
-T 00 78 22
-R 00 00 00 09
-T 00 79
-R 00 00 00 09
-T 00 79
-R 00 00 00 09
-T 00 79 22
-R 00 00 00 09
+R 00 00 00 01
+T 00 00
+R 00 00 00 01
+T 00 00
+R 00 00 00 0A
+T 00 00 90 FE 00 74 1B F0 90 FF 4A 74 01 F0
+R 00 00 00 0A
+T 00 0C
+R 00 00 00 0A
+T 00 0C 22
+R 00 00 00 0A
+T 00 0D
+R 00 00 00 0A
+T 00 0D 90 FE 00 74 4E F0 90 FE 01 74 49 F0 90
+R 00 00 00 0A
+T 00 1A FE 02 74 58 F0 90 FE 03 74 49 F0 90 FE 04
+R 00 00 00 0A
+T 00 28 74 45 F0 90 FE 05 E4 F0 90 FF 4A 74 06 F0
+R 00 00 00 0A
+T 00 36
+R 00 00 00 0A
+T 00 36 22
+R 00 00 00 0A
+T 00 37
+R 00 00 00 0A
+T 00 37 7A 00 7B 00
+R 00 00 00 0A
+T 00 3B
+R 00 00 00 0A
+T 00 3B C3 EA 94 08 EB 64 80 94 80 50 22
+R 00 00 00 0A
+T 00 46
+R 00 00 00 0A
+T 00 46 EA 24 00 FC EB 34 FE FD EA 24 80 F5 82 EB
+R 00 00 00 0A
+T 00 54 34 FD F5 83 E0 04 FE 8C 82 8D 83 EE F0 0A
+R 00 00 00 0A
+T 00 62 BA 00 D6 0B 80 D3
+R 00 00 00 0A
+T 00 68
+R 00 00 00 0A
+T 00 68 90 FF 4A 74 08 F0
+R 00 00 00 0A
+T 00 6E
+R 00 00 00 0A
+T 00 6E 22
+R 00 00 00 0A
+T 00 6F
+R 00 00 00 0A
+T 00 6F 7A 00 7B 00
+R 00 00 00 0A
+T 00 73
+R 00 00 00 0A
+T 00 73 C3 EA 94 06 EB 64 80 94 80 50 2B
+R 00 00 00 0A
+T 00 7E
+R 00 00 00 0A
+T 00 7E EA 24 00 00 F8 74 02 2A FC E4 3B FD EC 24
+R 00 00 00 0A 09 04 00 01
+T 00 8B 80 F5 82 ED 34 FD F5 83 E0 FC F6 EA 24 00
+R 00 00 00 0A
+T 00 99 F5 82 EB 34 FE F5 83 EC F0 0A BA 00 01 0B
+R 00 00 00 0A
+T 00 A7
+R 00 00 00 0A
+T 00 A7 80 CA
+R 00 00 00 0A
+T 00 A9
+R 00 00 00 0A
+T 00 A9 AA 80 90 FE 06 EA F0 AA 90 90 FE 07 EA F0
+R 00 00 00 0A
+T 00 B7 90 FF 4A 74 08 F0
+R 00 00 00 0A
+T 00 BD
+R 00 00 00 0A
+T 00 BD 22
+R 00 00 00 0A
+T 00 BE
+R 00 00 00 0A
+T 00 BE
+R 00 00 00 0A
+T 00 BE 22
+R 00 00 00 0A
+T 00 BF
+R 00 00 00 0A
+T 00 BF
+R 00 00 00 0A
+T 00 BF 22
+R 00 00 00 0A
+T 00 C0
+R 00 00 00 0A
+T 00 C0
+R 00 00 00 0A
+T 00 C0 22
+R 00 00 00 0A
+T 00 C1
+R 00 00 00 0A
+T 00 C1
+R 00 00 00 0A
+T 00 C1 22
+R 00 00 00 0A

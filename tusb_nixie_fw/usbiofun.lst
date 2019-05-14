@@ -1,6 +1,6 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : FreeWare ANSI-C Compiler
-                              3 ; Version 2.3.0 Mon May 13 16:50:08 2019
+                              3 ; Version 2.3.0 Mon May 13 19:58:47 2019
                               4 
                               5 ;--------------------------------------------------------
                               6 	.module usbiofun
@@ -18,337 +18,411 @@
                              18 	.globl _fn_cmd_01
                              19 	.globl _oep1_buffer
                              20 	.globl _iep1_buffer
-                             21 ;--------------------------------------------------------
-                             22 ; special function registers
-                             23 ;--------------------------------------------------------
-                    0080     24 _P0	=	0x0080
-                    0081     25 _SP	=	0x0081
-                    0082     26 _DPL	=	0x0082
-                    0083     27 _DPH	=	0x0083
-                    0087     28 _PCON	=	0x0087
-                    0088     29 _TCON	=	0x0088
-                    0089     30 _TMOD	=	0x0089
-                    008A     31 _TL0	=	0x008a
-                    008B     32 _TL1	=	0x008b
-                    008C     33 _TH0	=	0x008c
-                    008D     34 _TH1	=	0x008d
-                    0090     35 _P1	=	0x0090
-                    0098     36 _SCON	=	0x0098
-                    0099     37 _SBUF	=	0x0099
-                    00A0     38 _P2	=	0x00a0
-                    00A8     39 _IE	=	0x00a8
-                    00B0     40 _P3	=	0x00b0
-                    00B8     41 _IP	=	0x00b8
-                    00D0     42 _PSW	=	0x00d0
-                    00E0     43 _ACC	=	0x00e0
-                    00F0     44 _B	=	0x00f0
-                    00C8     45 _T2CON	=	0x00c8
-                    00CA     46 _RCAP2L	=	0x00ca
-                    00CB     47 _RCAP2H	=	0x00cb
-                    00CC     48 _TL2	=	0x00cc
-                    00CD     49 _TH2	=	0x00cd
-                             50 ;--------------------------------------------------------
-                             51 ; special function bits 
-                             52 ;--------------------------------------------------------
-                    0080     53 _P0_0	=	0x0080
-                    0081     54 _P0_1	=	0x0081
-                    0082     55 _P0_2	=	0x0082
-                    0083     56 _P0_3	=	0x0083
-                    0084     57 _P0_4	=	0x0084
-                    0085     58 _P0_5	=	0x0085
-                    0086     59 _P0_6	=	0x0086
-                    0087     60 _P0_7	=	0x0087
-                    0088     61 _IT0	=	0x0088
-                    0089     62 _IE0	=	0x0089
-                    008A     63 _IT1	=	0x008a
-                    008B     64 _IE1	=	0x008b
-                    008C     65 _TR0	=	0x008c
-                    008D     66 _TF0	=	0x008d
-                    008E     67 _TR1	=	0x008e
-                    008F     68 _TF1	=	0x008f
-                    0090     69 _P1_0	=	0x0090
-                    0091     70 _P1_1	=	0x0091
-                    0092     71 _P1_2	=	0x0092
-                    0093     72 _P1_3	=	0x0093
-                    0094     73 _P1_4	=	0x0094
-                    0095     74 _P1_5	=	0x0095
-                    0096     75 _P1_6	=	0x0096
-                    0097     76 _P1_7	=	0x0097
-                    0098     77 _RI	=	0x0098
-                    0099     78 _TI	=	0x0099
-                    009A     79 _RB8	=	0x009a
-                    009B     80 _TB8	=	0x009b
-                    009C     81 _REN	=	0x009c
-                    009D     82 _SM2	=	0x009d
-                    009E     83 _SM1	=	0x009e
-                    009F     84 _SM0	=	0x009f
-                    00A0     85 _P2_0	=	0x00a0
-                    00A1     86 _P2_1	=	0x00a1
-                    00A2     87 _P2_2	=	0x00a2
-                    00A3     88 _P2_3	=	0x00a3
-                    00A4     89 _P2_4	=	0x00a4
-                    00A5     90 _P2_5	=	0x00a5
-                    00A6     91 _P2_6	=	0x00a6
-                    00A7     92 _P2_7	=	0x00a7
-                    00A8     93 _EX0	=	0x00a8
-                    00A9     94 _ET0	=	0x00a9
-                    00AA     95 _EX1	=	0x00aa
-                    00AB     96 _ET1	=	0x00ab
-                    00AC     97 _ES	=	0x00ac
-                    00AF     98 _EA	=	0x00af
-                    00B0     99 _P3_0	=	0x00b0
-                    00B1    100 _P3_1	=	0x00b1
-                    00B2    101 _P3_2	=	0x00b2
-                    00B3    102 _P3_3	=	0x00b3
-                    00B4    103 _P3_4	=	0x00b4
-                    00B5    104 _P3_5	=	0x00b5
-                    00B6    105 _P3_6	=	0x00b6
-                    00B7    106 _P3_7	=	0x00b7
-                    00B0    107 _RXD	=	0x00b0
-                    00B1    108 _TXD	=	0x00b1
-                    00B2    109 _INT0	=	0x00b2
-                    00B3    110 _INT1	=	0x00b3
-                    00B4    111 _T0	=	0x00b4
-                    00B5    112 _T1	=	0x00b5
-                    00B6    113 _WR	=	0x00b6
-                    00B7    114 _RD	=	0x00b7
-                    00B8    115 _PX0	=	0x00b8
-                    00B9    116 _PT0	=	0x00b9
-                    00BA    117 _PX1	=	0x00ba
-                    00BB    118 _PT1	=	0x00bb
-                    00BC    119 _PS	=	0x00bc
-                    00D0    120 _P	=	0x00d0
-                    00D1    121 _F1	=	0x00d1
-                    00D2    122 _OV	=	0x00d2
-                    00D3    123 _RS0	=	0x00d3
-                    00D4    124 _RS1	=	0x00d4
-                    00D5    125 _F0	=	0x00d5
-                    00D6    126 _AC	=	0x00d6
-                    00D7    127 _CY	=	0x00d7
-                    00AD    128 _ET2	=	0x00ad
-                    00C8    129 _T2CON_0	=	0x00c8
-                    00C9    130 _T2CON_1	=	0x00c9
-                    00CA    131 _T2CON_2	=	0x00ca
-                    00CB    132 _T2CON_3	=	0x00cb
-                    00CC    133 _T2CON_4	=	0x00cc
-                    00CD    134 _T2CON_5	=	0x00cd
-                    00CE    135 _T2CON_6	=	0x00ce
-                    00CF    136 _T2CON_7	=	0x00cf
-                    00C8    137 _CP_RL2	=	0x00c8
-                    00C9    138 _C_T2	=	0x00c9
-                    00CA    139 _TR2	=	0x00ca
-                    00CB    140 _EXEN2	=	0x00cb
-                    00CC    141 _TCLK	=	0x00cc
-                    00CD    142 _RCLK	=	0x00cd
-                    00CE    143 _EXF2	=	0x00ce
-                    00CF    144 _TF2	=	0x00cf
-                            145 ;--------------------------------------------------------
-                            146 ; internal ram data
-                            147 ;--------------------------------------------------------
-                            148 	.area DSEG    (DATA)
-                            149 ;--------------------------------------------------------
-                            150 ; overlayable items in internal ram 
-                            151 ;--------------------------------------------------------
-                            152 	.area OSEG    (OVR,DATA)
-                            153 ;--------------------------------------------------------
-                            154 ; indirectly addressable internal ram data
-                            155 ;--------------------------------------------------------
-                            156 	.area ISEG    (DATA)
-                            157 ;--------------------------------------------------------
-                            158 ; bit data
+                             21 	.globl _nixie_digits
+                             22 ;--------------------------------------------------------
+                             23 ; special function registers
+                             24 ;--------------------------------------------------------
+                    0080     25 _P0	=	0x0080
+                    0081     26 _SP	=	0x0081
+                    0082     27 _DPL	=	0x0082
+                    0083     28 _DPH	=	0x0083
+                    0087     29 _PCON	=	0x0087
+                    0088     30 _TCON	=	0x0088
+                    0089     31 _TMOD	=	0x0089
+                    008A     32 _TL0	=	0x008a
+                    008B     33 _TL1	=	0x008b
+                    008C     34 _TH0	=	0x008c
+                    008D     35 _TH1	=	0x008d
+                    0090     36 _P1	=	0x0090
+                    0098     37 _SCON	=	0x0098
+                    0099     38 _SBUF	=	0x0099
+                    00A0     39 _P2	=	0x00a0
+                    00A8     40 _IE	=	0x00a8
+                    00B0     41 _P3	=	0x00b0
+                    00B8     42 _IP	=	0x00b8
+                    00D0     43 _PSW	=	0x00d0
+                    00E0     44 _ACC	=	0x00e0
+                    00F0     45 _B	=	0x00f0
+                    00C8     46 _T2CON	=	0x00c8
+                    00CA     47 _RCAP2L	=	0x00ca
+                    00CB     48 _RCAP2H	=	0x00cb
+                    00CC     49 _TL2	=	0x00cc
+                    00CD     50 _TH2	=	0x00cd
+                             51 ;--------------------------------------------------------
+                             52 ; special function bits 
+                             53 ;--------------------------------------------------------
+                    0080     54 _P0_0	=	0x0080
+                    0081     55 _P0_1	=	0x0081
+                    0082     56 _P0_2	=	0x0082
+                    0083     57 _P0_3	=	0x0083
+                    0084     58 _P0_4	=	0x0084
+                    0085     59 _P0_5	=	0x0085
+                    0086     60 _P0_6	=	0x0086
+                    0087     61 _P0_7	=	0x0087
+                    0088     62 _IT0	=	0x0088
+                    0089     63 _IE0	=	0x0089
+                    008A     64 _IT1	=	0x008a
+                    008B     65 _IE1	=	0x008b
+                    008C     66 _TR0	=	0x008c
+                    008D     67 _TF0	=	0x008d
+                    008E     68 _TR1	=	0x008e
+                    008F     69 _TF1	=	0x008f
+                    0090     70 _P1_0	=	0x0090
+                    0091     71 _P1_1	=	0x0091
+                    0092     72 _P1_2	=	0x0092
+                    0093     73 _P1_3	=	0x0093
+                    0094     74 _P1_4	=	0x0094
+                    0095     75 _P1_5	=	0x0095
+                    0096     76 _P1_6	=	0x0096
+                    0097     77 _P1_7	=	0x0097
+                    0098     78 _RI	=	0x0098
+                    0099     79 _TI	=	0x0099
+                    009A     80 _RB8	=	0x009a
+                    009B     81 _TB8	=	0x009b
+                    009C     82 _REN	=	0x009c
+                    009D     83 _SM2	=	0x009d
+                    009E     84 _SM1	=	0x009e
+                    009F     85 _SM0	=	0x009f
+                    00A0     86 _P2_0	=	0x00a0
+                    00A1     87 _P2_1	=	0x00a1
+                    00A2     88 _P2_2	=	0x00a2
+                    00A3     89 _P2_3	=	0x00a3
+                    00A4     90 _P2_4	=	0x00a4
+                    00A5     91 _P2_5	=	0x00a5
+                    00A6     92 _P2_6	=	0x00a6
+                    00A7     93 _P2_7	=	0x00a7
+                    00A8     94 _EX0	=	0x00a8
+                    00A9     95 _ET0	=	0x00a9
+                    00AA     96 _EX1	=	0x00aa
+                    00AB     97 _ET1	=	0x00ab
+                    00AC     98 _ES	=	0x00ac
+                    00AF     99 _EA	=	0x00af
+                    00B0    100 _P3_0	=	0x00b0
+                    00B1    101 _P3_1	=	0x00b1
+                    00B2    102 _P3_2	=	0x00b2
+                    00B3    103 _P3_3	=	0x00b3
+                    00B4    104 _P3_4	=	0x00b4
+                    00B5    105 _P3_5	=	0x00b5
+                    00B6    106 _P3_6	=	0x00b6
+                    00B7    107 _P3_7	=	0x00b7
+                    00B0    108 _RXD	=	0x00b0
+                    00B1    109 _TXD	=	0x00b1
+                    00B2    110 _INT0	=	0x00b2
+                    00B3    111 _INT1	=	0x00b3
+                    00B4    112 _T0	=	0x00b4
+                    00B5    113 _T1	=	0x00b5
+                    00B6    114 _WR	=	0x00b6
+                    00B7    115 _RD	=	0x00b7
+                    00B8    116 _PX0	=	0x00b8
+                    00B9    117 _PT0	=	0x00b9
+                    00BA    118 _PX1	=	0x00ba
+                    00BB    119 _PT1	=	0x00bb
+                    00BC    120 _PS	=	0x00bc
+                    00D0    121 _P	=	0x00d0
+                    00D1    122 _F1	=	0x00d1
+                    00D2    123 _OV	=	0x00d2
+                    00D3    124 _RS0	=	0x00d3
+                    00D4    125 _RS1	=	0x00d4
+                    00D5    126 _F0	=	0x00d5
+                    00D6    127 _AC	=	0x00d6
+                    00D7    128 _CY	=	0x00d7
+                    00AD    129 _ET2	=	0x00ad
+                    00C8    130 _T2CON_0	=	0x00c8
+                    00C9    131 _T2CON_1	=	0x00c9
+                    00CA    132 _T2CON_2	=	0x00ca
+                    00CB    133 _T2CON_3	=	0x00cb
+                    00CC    134 _T2CON_4	=	0x00cc
+                    00CD    135 _T2CON_5	=	0x00cd
+                    00CE    136 _T2CON_6	=	0x00ce
+                    00CF    137 _T2CON_7	=	0x00cf
+                    00C8    138 _CP_RL2	=	0x00c8
+                    00C9    139 _C_T2	=	0x00c9
+                    00CA    140 _TR2	=	0x00ca
+                    00CB    141 _EXEN2	=	0x00cb
+                    00CC    142 _TCLK	=	0x00cc
+                    00CD    143 _RCLK	=	0x00cd
+                    00CE    144 _EXF2	=	0x00ce
+                    00CF    145 _TF2	=	0x00cf
+                            146 ;--------------------------------------------------------
+                            147 ; internal ram data
+                            148 ;--------------------------------------------------------
+                            149 	.area DSEG    (DATA)
+   0000                     150 _nixie_digits::
+   0000                     151 	.ds 6
+                            152 ;--------------------------------------------------------
+                            153 ; overlayable items in internal ram 
+                            154 ;--------------------------------------------------------
+                            155 	.area _DUMMY
+                            156 	.area	OSEG    (OVR,DATA)
+                            157 	.area _DUMMY
+                            158 	.area	OSEG    (OVR,DATA)
                             159 ;--------------------------------------------------------
-                            160 	.area BSEG    (BIT)
+                            160 ; indirectly addressable internal ram data
                             161 ;--------------------------------------------------------
-                            162 ; external ram data
+                            162 	.area ISEG    (DATA)
                             163 ;--------------------------------------------------------
-                            164 	.area XSEG    (XDATA)
-                    FE00    165 _iep1_buffer	=	0xfe00
-                    FD80    166 _oep1_buffer	=	0xfd80
+                            164 ; bit data
+                            165 ;--------------------------------------------------------
+                            166 	.area BSEG    (BIT)
                             167 ;--------------------------------------------------------
-                            168 ; global & static initialisations
+                            168 ; external ram data
                             169 ;--------------------------------------------------------
-                            170 	.area GSINIT  (CODE)
-                            171 	.area GSFINAL (CODE)
-                            172 	.area GSINIT  (CODE)
+                            170 	.area XSEG    (XDATA)
+                    FE00    171 _iep1_buffer	=	0xfe00
+                    FD80    172 _oep1_buffer	=	0xfd80
                             173 ;--------------------------------------------------------
-                            174 ; Home
+                            174 ; global & static initialisations
                             175 ;--------------------------------------------------------
-                            176 	.area HOME	 (CODE)
-                            177 	.area CSEG    (CODE)
-                            178 ;--------------------------------------------------------
-                            179 ; code
-                            180 ;--------------------------------------------------------
-                            181 	.area CSEG    (CODE)
-                            182 ;------------------------------------------------------------
-                            183 ;Allocation info for local variables in function 'fn_cmd_01'
-                            184 ;------------------------------------------------------------
-                            185 ;	usbiofun.c 9
-                            186 ;	-----------------------------------------
-                            187 ;	 function fn_cmd_01
-                            188 ;	-----------------------------------------
-   0000                     189 _fn_cmd_01:
-                    0002    190 	ar2 = 0x02
-                    0003    191 	ar3 = 0x03
-                    0004    192 	ar4 = 0x04
-                    0005    193 	ar5 = 0x05
-                    0006    194 	ar6 = 0x06
-                    0007    195 	ar7 = 0x07
-                    0000    196 	ar0 = 0x00
-                    0001    197 	ar1 = 0x01
-                            198 ;	usbiofun.c 10
-   0000 75 80 00            199 	mov	_P0,#0x00
-                            200 ;	usbiofun.c 11
-   0003 75 90 00            201 	mov	_P1,#0x00
-                            202 ;	usbiofun.c 15
-   0006 90 FE 00            203 	mov	dptr,#_iep1_buffer
-   0009 74 1B               204 	mov	a,#0x1B
-   000B F0                  205 	movx	@dptr,a
-                            206 ;	usbiofun.c 16
-                            207 ; Peephole 182   used 16 bit load of dptr
-   000C 90 FF 4A            208 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   000F 74 01               209 	mov	a,#0x01
-   0011 F0                  210 	movx	@dptr,a
-   0012                     211 00101$:
-   0012 22                  212 	ret
-                            213 ;------------------------------------------------------------
-                            214 ;Allocation info for local variables in function 'fn_cmd_02'
+                            176 	.area GSINIT  (CODE)
+                            177 	.area GSFINAL (CODE)
+                            178 	.area GSINIT  (CODE)
+                            179 ;--------------------------------------------------------
+                            180 ; Home
+                            181 ;--------------------------------------------------------
+                            182 	.area HOME	 (CODE)
+                            183 	.area CSEG    (CODE)
+                            184 ;--------------------------------------------------------
+                            185 ; code
+                            186 ;--------------------------------------------------------
+                            187 	.area CSEG    (CODE)
+                            188 ;------------------------------------------------------------
+                            189 ;Allocation info for local variables in function 'fn_cmd_01'
+                            190 ;------------------------------------------------------------
+                            191 ;	usbiofun.c 13
+                            192 ;	-----------------------------------------
+                            193 ;	 function fn_cmd_01
+                            194 ;	-----------------------------------------
+   0000                     195 _fn_cmd_01:
+                    0002    196 	ar2 = 0x02
+                    0003    197 	ar3 = 0x03
+                    0004    198 	ar4 = 0x04
+                    0005    199 	ar5 = 0x05
+                    0006    200 	ar6 = 0x06
+                    0007    201 	ar7 = 0x07
+                    0000    202 	ar0 = 0x00
+                    0001    203 	ar1 = 0x01
+                            204 ;	usbiofun.c 16
+   0000 90 FE 00            205 	mov	dptr,#_iep1_buffer
+   0003 74 1B               206 	mov	a,#0x1B
+   0005 F0                  207 	movx	@dptr,a
+                            208 ;	usbiofun.c 17
+                            209 ; Peephole 182   used 16 bit load of dptr
+   0006 90 FF 4A            210 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   0009 74 01               211 	mov	a,#0x01
+   000B F0                  212 	movx	@dptr,a
+   000C                     213 00101$:
+   000C 22                  214 	ret
                             215 ;------------------------------------------------------------
-                            216 ;	usbiofun.c 20
-                            217 ;	-----------------------------------------
-                            218 ;	 function fn_cmd_02
+                            216 ;Allocation info for local variables in function 'fn_cmd_02'
+                            217 ;------------------------------------------------------------
+                            218 ;	usbiofun.c 21
                             219 ;	-----------------------------------------
-   0013                     220 _fn_cmd_02:
-                            221 ;	usbiofun.c 21
-   0013 75 80 FF            222 	mov	_P0,#0xFF
+                            220 ;	 function fn_cmd_02
+                            221 ;	-----------------------------------------
+   000D                     222 _fn_cmd_02:
                             223 ;	usbiofun.c 22
-   0016 75 90 FF            224 	mov	_P1,#0xFF
-                            225 ;	usbiofun.c 26
-   0019 90 FE 00            226 	mov	dptr,#_iep1_buffer
-   001C 74 1B               227 	mov	a,#0x1B
-   001E F0                  228 	movx	@dptr,a
-                            229 ;	usbiofun.c 27
-                            230 ; Peephole 182   used 16 bit load of dptr
-   001F 90 FF 4A            231 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   0022 74 01               232 	mov	a,#0x01
-   0024 F0                  233 	movx	@dptr,a
-   0025                     234 00101$:
-   0025 22                  235 	ret
-                            236 ;------------------------------------------------------------
-                            237 ;Allocation info for local variables in function 'fn_cmd_03'
-                            238 ;------------------------------------------------------------
-                            239 ;	usbiofun.c 30
-                            240 ;	-----------------------------------------
-                            241 ;	 function fn_cmd_03
-                            242 ;	-----------------------------------------
-   0026                     243 _fn_cmd_03:
-                            244 ;	usbiofun.c 31
-   0026 75 80 FF            245 	mov	_P0,#0xFF
-                            246 ;	usbiofun.c 32
-   0029 75 90 FF            247 	mov	_P1,#0xFF
-                            248 ;	usbiofun.c 33
-   002C C2 82               249 	clr	_P0_2
-                            250 ;	usbiofun.c 34
-   002E C2 95               251 	clr	_P1_5
-                            252 ;	usbiofun.c 35
-   0030 C2 96               253 	clr	_P1_6
-                            254 ;	usbiofun.c 39
-   0032 90 FE 00            255 	mov	dptr,#_iep1_buffer
-   0035 74 1B               256 	mov	a,#0x1B
-   0037 F0                  257 	movx	@dptr,a
-                            258 ;	usbiofun.c 40
-                            259 ; Peephole 182   used 16 bit load of dptr
-   0038 90 FF 4A            260 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   003B 74 01               261 	mov	a,#0x01
-   003D F0                  262 	movx	@dptr,a
-   003E                     263 00101$:
-   003E 22                  264 	ret
-                            265 ;------------------------------------------------------------
-                            266 ;Allocation info for local variables in function 'fn_cmd_04'
-                            267 ;------------------------------------------------------------
-                            268 ;	usbiofun.c 43
-                            269 ;	-----------------------------------------
-                            270 ;	 function fn_cmd_04
-                            271 ;	-----------------------------------------
-   003F                     272 _fn_cmd_04:
-                            273 ;	usbiofun.c 44
-   003F 75 80 FF            274 	mov	_P0,#0xFF
-                            275 ;	usbiofun.c 45
-   0042 75 90 FF            276 	mov	_P1,#0xFF
-                            277 ;	usbiofun.c 49
-   0045 90 FE 00            278 	mov	dptr,#_iep1_buffer
-   0048 74 1B               279 	mov	a,#0x1B
-   004A F0                  280 	movx	@dptr,a
-                            281 ;	usbiofun.c 50
-                            282 ; Peephole 182   used 16 bit load of dptr
-   004B 90 FF 4A            283 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   004E 74 01               284 	mov	a,#0x01
-   0050 F0                  285 	movx	@dptr,a
-   0051                     286 00101$:
-   0051 22                  287 	ret
-                            288 ;------------------------------------------------------------
-                            289 ;Allocation info for local variables in function 'fn_cmd_05'
-                            290 ;------------------------------------------------------------
-                            291 ;	usbiofun.c 53
-                            292 ;	-----------------------------------------
-                            293 ;	 function fn_cmd_05
-                            294 ;	-----------------------------------------
-   0052                     295 _fn_cmd_05:
-                            296 ;	usbiofun.c 54
-   0052 75 80 FF            297 	mov	_P0,#0xFF
-                            298 ;	usbiofun.c 55
-   0055 75 90 D7            299 	mov	_P1,#0xD7
-                            300 ;	usbiofun.c 59
-   0058 90 FE 00            301 	mov	dptr,#_iep1_buffer
-   005B 74 1B               302 	mov	a,#0x1B
-   005D F0                  303 	movx	@dptr,a
-                            304 ;	usbiofun.c 60
-                            305 ; Peephole 182   used 16 bit load of dptr
-   005E 90 FF 4A            306 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   0061 74 01               307 	mov	a,#0x01
-   0063 F0                  308 	movx	@dptr,a
-   0064                     309 00101$:
-   0064 22                  310 	ret
-                            311 ;------------------------------------------------------------
-                            312 ;Allocation info for local variables in function 'fn_cmd_06'
-                            313 ;------------------------------------------------------------
-                            314 ;	usbiofun.c 63
-                            315 ;	-----------------------------------------
-                            316 ;	 function fn_cmd_06
-                            317 ;	-----------------------------------------
-   0065                     318 _fn_cmd_06:
-                            319 ;	usbiofun.c 64
-   0065 75 80 FE            320 	mov	_P0,#0xFE
-                            321 ;	usbiofun.c 65
-   0068 75 90 3B            322 	mov	_P1,#0x3B
-                            323 ;	usbiofun.c 69
-   006B 90 FE 00            324 	mov	dptr,#_iep1_buffer
-   006E 74 1B               325 	mov	a,#0x1B
-   0070 F0                  326 	movx	@dptr,a
-                            327 ;	usbiofun.c 70
-                            328 ; Peephole 182   used 16 bit load of dptr
-   0071 90 FF 4A            329 	mov  dptr,#(((0xFF)<<8) + 0x4A)
-   0074 74 01               330 	mov	a,#0x01
-   0076 F0                  331 	movx	@dptr,a
-   0077                     332 00101$:
-   0077 22                  333 	ret
-                            334 ;------------------------------------------------------------
-                            335 ;Allocation info for local variables in function 'fn_cmd_07'
-                            336 ;------------------------------------------------------------
-                            337 ;	usbiofun.c 73
-                            338 ;	-----------------------------------------
-                            339 ;	 function fn_cmd_07
-                            340 ;	-----------------------------------------
-   0078                     341 _fn_cmd_07:
-   0078                     342 00101$:
-   0078 22                  343 	ret
-                            344 ;------------------------------------------------------------
-                            345 ;Allocation info for local variables in function 'fn_cmd_08'
-                            346 ;------------------------------------------------------------
-                            347 ;	usbiofun.c 75
-                            348 ;	-----------------------------------------
-                            349 ;	 function fn_cmd_08
-                            350 ;	-----------------------------------------
-   0079                     351 _fn_cmd_08:
-   0079                     352 00101$:
-   0079 22                  353 	ret
-                            354 	.area CSEG    (CODE)
+   000D 90 FE 00            224 	mov	dptr,#_iep1_buffer
+   0010 74 4E               225 	mov	a,#0x4E
+   0012 F0                  226 	movx	@dptr,a
+                            227 ;	usbiofun.c 23
+   0013 90 FE 01            228 	mov	dptr,#(_iep1_buffer + 0x0001)
+   0016 74 49               229 	mov	a,#0x49
+   0018 F0                  230 	movx	@dptr,a
+                            231 ;	usbiofun.c 24
+   0019 90 FE 02            232 	mov	dptr,#(_iep1_buffer + 0x0002)
+   001C 74 58               233 	mov	a,#0x58
+   001E F0                  234 	movx	@dptr,a
+                            235 ;	usbiofun.c 25
+   001F 90 FE 03            236 	mov	dptr,#(_iep1_buffer + 0x0003)
+   0022 74 49               237 	mov	a,#0x49
+   0024 F0                  238 	movx	@dptr,a
+                            239 ;	usbiofun.c 26
+   0025 90 FE 04            240 	mov	dptr,#(_iep1_buffer + 0x0004)
+   0028 74 45               241 	mov	a,#0x45
+   002A F0                  242 	movx	@dptr,a
+                            243 ;	usbiofun.c 27
+   002B 90 FE 05            244 	mov	dptr,#(_iep1_buffer + 0x0005)
+                            245 ; Peephole 180   changed mov to clr
+   002E E4                  246 	clr  a
+   002F F0                  247 	movx	@dptr,a
+                            248 ;	usbiofun.c 28
+                            249 ; Peephole 182   used 16 bit load of dptr
+   0030 90 FF 4A            250 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   0033 74 06               251 	mov	a,#0x06
+   0035 F0                  252 	movx	@dptr,a
+   0036                     253 00101$:
+   0036 22                  254 	ret
+                            255 ;------------------------------------------------------------
+                            256 ;Allocation info for local variables in function 'fn_cmd_03'
+                            257 ;------------------------------------------------------------
+                            258 ;	usbiofun.c 31
+                            259 ;	-----------------------------------------
+                            260 ;	 function fn_cmd_03
+                            261 ;	-----------------------------------------
+   0037                     262 _fn_cmd_03:
+                            263 ;	usbiofun.c 34
+   0037 7A 00               264 	mov	r2,#0x00
+   0039 7B 00               265 	mov	r3,#0x00
+   003B                     266 00101$:
+   003B C3                  267 	clr	c
+   003C EA                  268 	mov	a,r2
+   003D 94 08               269 	subb	a,#0x08
+   003F EB                  270 	mov	a,r3
+   0040 64 80               271 	xrl	a,#0x80
+   0042 94 80               272 	subb	a,#0x80
+                            273 ; Peephole 108   removed ljmp by inverse jump logic
+   0044 50 22               274 	jnc  00104$
+   0046                     275 00109$:
+                            276 ;	usbiofun.c 35
+   0046 EA                  277 	mov	a,r2
+   0047 24 00               278 	add	a,#_iep1_buffer
+   0049 FC                  279 	mov	r4,a
+   004A EB                  280 	mov	a,r3
+   004B 34 FE               281 	addc	a,#(_iep1_buffer >> 8)
+   004D FD                  282 	mov	r5,a
+   004E EA                  283 	mov	a,r2
+   004F 24 80               284 	add	a,#_oep1_buffer
+   0051 F5 82               285 	mov	dpl,a
+   0053 EB                  286 	mov	a,r3
+   0054 34 FD               287 	addc	a,#(_oep1_buffer >> 8)
+   0056 F5 83               288 	mov	dph,a
+   0058 E0                  289 	movx	a,@dptr
+                            290 ; Peephole 185   changed order of increment (acc incremented also!)
+   0059 04                  291 	inc  a
+   005A FE                  292 	mov  r6,a
+   005B 8C 82               293 	mov	dpl,r4
+   005D 8D 83               294 	mov	dph,r5
+   005F EE                  295 	mov	a,r6
+   0060 F0                  296 	movx	@dptr,a
+                            297 ;	usbiofun.c 34
+                            298 ;	tail increment optimized
+   0061 0A                  299 	inc	r2
+   0062 BA 00 D6            300 	cjne	r2,#0x00,00101$
+   0065 0B                  301 	inc	r3
+                            302 ; Peephole 132   changed ljmp to sjmp
+   0066 80 D3               303 	sjmp 00101$
+   0068                     304 00104$:
+                            305 ;	usbiofun.c 37
+                            306 ; Peephole 182   used 16 bit load of dptr
+   0068 90 FF 4A            307 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   006B 74 08               308 	mov	a,#0x08
+   006D F0                  309 	movx	@dptr,a
+   006E                     310 00105$:
+   006E 22                  311 	ret
+                            312 ;------------------------------------------------------------
+                            313 ;Allocation info for local variables in function 'fn_cmd_04'
+                            314 ;------------------------------------------------------------
+                            315 ;	usbiofun.c 44
+                            316 ;	-----------------------------------------
+                            317 ;	 function fn_cmd_04
+                            318 ;	-----------------------------------------
+   006F                     319 _fn_cmd_04:
+                            320 ;	usbiofun.c 47
+   006F 7A 00               321 	mov	r2,#0x00
+   0071 7B 00               322 	mov	r3,#0x00
+   0073                     323 00101$:
+   0073 C3                  324 	clr	c
+   0074 EA                  325 	mov	a,r2
+   0075 94 06               326 	subb	a,#0x06
+   0077 EB                  327 	mov	a,r3
+   0078 64 80               328 	xrl	a,#0x80
+   007A 94 80               329 	subb	a,#0x80
+                            330 ; Peephole 108   removed ljmp by inverse jump logic
+   007C 50 2B               331 	jnc  00104$
+   007E                     332 00109$:
+                            333 ;	usbiofun.c 48
+   007E EA                  334 	mov	a,r2
+   007F 24r00               335 	add	a,#_nixie_digits
+   0081 F8                  336 	mov	r0,a
+   0082 74 02               337 	mov	a,#0x02
+   0084 2A                  338 	add	a,r2
+   0085 FC                  339 	mov	r4,a
+                            340 ; Peephole 180   changed mov to clr
+   0086 E4                  341 	clr  a
+   0087 3B                  342 	addc	a,r3
+   0088 FD                  343 	mov	r5,a
+   0089 EC                  344 	mov	a,r4
+   008A 24 80               345 	add	a,#_oep1_buffer
+   008C F5 82               346 	mov	dpl,a
+   008E ED                  347 	mov	a,r5
+   008F 34 FD               348 	addc	a,#(_oep1_buffer >> 8)
+   0091 F5 83               349 	mov	dph,a
+   0093 E0                  350 	movx	a,@dptr
+                            351 ; Peephole 192   used a instead of ar4 as source
+   0094 FC                  352 	mov  r4,a
+   0095 F6                  353 	mov  @r0,a
+                            354 ;	usbiofun.c 49
+   0096 EA                  355 	mov	a,r2
+   0097 24 00               356 	add	a,#_iep1_buffer
+   0099 F5 82               357 	mov	dpl,a
+   009B EB                  358 	mov	a,r3
+   009C 34 FE               359 	addc	a,#(_iep1_buffer >> 8)
+   009E F5 83               360 	mov	dph,a
+   00A0 EC                  361 	mov	a,r4
+   00A1 F0                  362 	movx	@dptr,a
+                            363 ;	usbiofun.c 47
+   00A2 0A                  364 	inc	r2
+   00A3 BA 00 01            365 	cjne	r2,#0x00,00110$
+   00A6 0B                  366 	inc	r3
+   00A7                     367 00110$:
+                            368 ; Peephole 132   changed ljmp to sjmp
+   00A7 80 CA               369 	sjmp 00101$
+   00A9                     370 00104$:
+                            371 ;	usbiofun.c 51
+   00A9 AA 80               372 	mov	r2,_P0
+   00AB 90 FE 06            373 	mov	dptr,#(_iep1_buffer + 0x0006)
+   00AE EA                  374 	mov	a,r2
+   00AF F0                  375 	movx	@dptr,a
+                            376 ;	usbiofun.c 52
+   00B0 AA 90               377 	mov	r2,_P1
+   00B2 90 FE 07            378 	mov	dptr,#(_iep1_buffer + 0x0007)
+   00B5 EA                  379 	mov	a,r2
+   00B6 F0                  380 	movx	@dptr,a
+                            381 ;	usbiofun.c 56
+                            382 ; Peephole 182   used 16 bit load of dptr
+   00B7 90 FF 4A            383 	mov  dptr,#(((0xFF)<<8) + 0x4A)
+   00BA 74 08               384 	mov	a,#0x08
+   00BC F0                  385 	movx	@dptr,a
+   00BD                     386 00105$:
+   00BD 22                  387 	ret
+                            388 ;------------------------------------------------------------
+                            389 ;Allocation info for local variables in function 'fn_cmd_05'
+                            390 ;------------------------------------------------------------
+                            391 ;	usbiofun.c 60
+                            392 ;	-----------------------------------------
+                            393 ;	 function fn_cmd_05
+                            394 ;	-----------------------------------------
+   00BE                     395 _fn_cmd_05:
+   00BE                     396 00101$:
+   00BE 22                  397 	ret
+                            398 ;------------------------------------------------------------
+                            399 ;Allocation info for local variables in function 'fn_cmd_06'
+                            400 ;------------------------------------------------------------
+                            401 ;	usbiofun.c 61
+                            402 ;	-----------------------------------------
+                            403 ;	 function fn_cmd_06
+                            404 ;	-----------------------------------------
+   00BF                     405 _fn_cmd_06:
+   00BF                     406 00101$:
+   00BF 22                  407 	ret
+                            408 ;------------------------------------------------------------
+                            409 ;Allocation info for local variables in function 'fn_cmd_07'
+                            410 ;------------------------------------------------------------
+                            411 ;	usbiofun.c 62
+                            412 ;	-----------------------------------------
+                            413 ;	 function fn_cmd_07
+                            414 ;	-----------------------------------------
+   00C0                     415 _fn_cmd_07:
+   00C0                     416 00101$:
+   00C0 22                  417 	ret
+                            418 ;------------------------------------------------------------
+                            419 ;Allocation info for local variables in function 'fn_cmd_08'
+                            420 ;------------------------------------------------------------
+                            421 ;	usbiofun.c 63
+                            422 ;	-----------------------------------------
+                            423 ;	 function fn_cmd_08
+                            424 ;	-----------------------------------------
+   00C1                     425 _fn_cmd_08:
+   00C1                     426 00101$:
+   00C1 22                  427 	ret
+                            428 	.area CSEG    (CODE)

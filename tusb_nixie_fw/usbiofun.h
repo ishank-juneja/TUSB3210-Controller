@@ -1,3 +1,5 @@
+extern char nixie_digits[6];
+
 void fn_cmd_01(void);
 void fn_cmd_02(void);
 void fn_cmd_03(void);
