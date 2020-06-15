@@ -2,9 +2,11 @@
 ***
 <p align="center">
   <img src="media/block_diagram.png" width="300"/>
+  <br>
+<b>Block Diagram of our project</b>
 </p>
 
-**Block Diagram of our project**
+****
 
 The now discontinued [TUSB3210 microcontroller](media/tusb3210.pdf) by Texas Instruments was used in our project on a USB powered and controlled Nixie Tube clock display.
 
