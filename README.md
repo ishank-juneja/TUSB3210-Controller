@@ -5,4 +5,3 @@ The now discontinued TUSB3210 microcontroller by Texas Instrumnets was used in o
 Details of our project can be found on [Ishank's Blog](https://ishank-juneja.github.io/blog/)
 
 **Usage**
-`
