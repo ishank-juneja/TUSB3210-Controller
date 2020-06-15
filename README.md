@@ -1,6 +1,8 @@
 # Program a TUSB3210 Microcontroller
 ***
-<img src="media/block_diagram.png" width="250"/>
+<p align="center">
+  <img src="media/block_diagram.png" width="300"/>
+</p>
 
 **Block Diagram of our project**
 
@@ -84,4 +86,9 @@ The procedure to install and run remains the same as the one described in the pr
 
 Linked below is a video of our project in action with a glimpse of the communication setup between the host and the controller towards the end of the video in the lower right corner of the frame.
 
-[![Project Video](media/image_link.png)](https://youtu.be/MN-FbMPmbiw)
+<p align="center">
+  <a href="http://youtu.be/MN-FbMPmbiw">
+         <img alt="Project Video" src="media/image_link.png"
+         width=400">
+      </a>
+</p>
