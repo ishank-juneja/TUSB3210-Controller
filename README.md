@@ -1,4 +1,4 @@
-# Repository for code to program a TUSB3210 Microcontroller
+# Program a TUSB3210 Microcontroller
 
 The now discontinued TUSB3210 microcontroller by Texas Instrumnets was used in out project on a USB powered and controlled nixie tube clock display.
 
