@@ -10,7 +10,12 @@
 
 The now discontinued [TUSB3210 microcontroller](media/tusb3210.pdf) by Texas Instruments was used in our project on a USB powered and controlled Nixie Tube clock display.
 
-Details of our project can be found in a three part series on [Ishank's Blog](https://ishank-juneja.github.io/blog/) under *electronics*.
+Details of our project can be found in a three part series-
+
+Part 1: [Nixie Tube Characterization](https://ishank-juneja.github.io/blog/nixieClock)<br>
+Part 2: [Power Supply Design](https://ishank-juneja.github.io/blog/nixieClockPower)<br>
+Part 3: [Clock Controller Design](https://ishank-juneja.github.io/blog/nixieClockController)
+
 ***
 ### **About the TUSB3210**
 
